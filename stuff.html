@@ -1,0 +1,79 @@
+---
+    title: ED - Stuff
+#    permalink: '/ED/stuff/'
+---
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <!--Import Google Icon Font-->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/custom.css" />
+    <title>{{ page.title }}</title>
+</head>
+<body class="font">
+
+    <!-- PAGE TITLE -->
+    <div class="section primary center-align">
+        <h2 id="title" class="title">- Check out <span class="secondary">E</span>D<sup>2</sup> client work <span class="secondary">&</span> our own projects -</h2>
+    </div>
+
+    <!-- PHOTO ITERATOR - from assets/img -->
+    <div class="section secondary-background center-align stuff-section">
+        <div id="content" class="container">
+            {% assign image_files = site.static_files | where: "image", true %}
+            {% for myimage in image_files %}
+            {% assign value = forloop.index | modulo:4 %}
+            {% if value == 1 %}
+            <div class="row valign-wrapper primary-boarder rcorners">
+            {% endif %}           
+            <div class="col s3">
+                <img class="materialboxed responsive-img" data-caption="{{ myimage.basename }}" src="{{ myimage.path }}" />
+            </div>
+            {% if value == 0 or forloop.last %}
+            </div>
+            {% endif %}         
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- PREV AND CURRENT CLIENTS SECTION -->
+    <div class="section white center-align">
+        <div class="container primary">      
+            <h4 class="title">- Our Clients <span class="secondary">&</span> Partners -</h4>
+            <div class="row valign-wrapper">
+                <div class="col s4">
+                    <img class="responsive-img" src="assets/site-img/Our Clients - SRCHC.png" />
+                </div>
+                <div class="col s4">
+                    <img class="responsive-img" src="assets/site-img/Our Clients - HOVR.png" />
+                </div>
+                <div class="col s4">
+                    <img class="responsive-img" src="assets/site-img/Our Clients - TBT.png" />
+                </div>
+            </div>
+            <div class="row valign-wrapper">
+                <div class="col s6">
+                    <img class="responsive-img" src="assets/site-img/Our Clients - LambShep.png" />
+                </div>
+                <div class="col s6">
+                    <img class="responsive-img" src="assets/site-img/Our Clients - CReATe.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--JavaScript Imports-->
+    <script type="text/javascript" src="assets/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#title').fadeIn(2000);
+            $('#content').delay(1000).fadeIn(2000);
+        });
+    </script>
+</body>
+</html>

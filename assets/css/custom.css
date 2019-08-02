@@ -1,0 +1,77 @@
+/* --------------------------------- CUSTOM CLASSES --------------------------------- */
+
+.font {
+    font-family: 'Palatino Linotype';
+}
+
+.fs1 {
+    font-size: 2em;
+}
+
+.fs2 {
+    font-size: 1.33em;
+}
+
+.title {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.empty-index{
+    height: 10vh;
+}
+
+.stuff-section {
+    min-height: 75vh;
+}
+
+.rcorners {
+    border-radius: 10px;
+}
+
+.card-panel:hover {
+    color: white !important;
+    background-color: #4E596E !important;
+    border: 2px solid white !important;
+    cursor: pointer !important;
+}
+
+.max-size {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+/* --------------------------------- COLOURS --------------------------------- */
+.primary {
+    color: #C7A16D;
+}
+
+.primary-background {
+    background-color: #C7A16D !important;
+}
+
+.primary-boarder {
+    border: 2px solid #C7A16D !important;
+}
+
+.secondary {
+    color: #4E596E;
+}
+
+.secondary-background {
+    background-color: #4E596E !important;
+}
+
+/* --------------------------------- ID TAGS --------------------------------- */
+#title {
+    display: none;
+}
+
+#options {
+    display: none;
+}
+
+#content {
+    display: none;
+}
+

@@ -1,0 +1,113 @@
+---
+title: ED
+# permalink: '/ED/'
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/custom.css" />
+    <title>{{ page.title }}</title>
+</head>
+
+<body class="font">
+
+    <div class="section white empty-index"></div>
+    <div class="row center-align valign-wrapper full-height">
+        <div class="col s4">
+            <div class="container">
+                <div id="quote-card" class="card-panel white primary-boarder rcorners title fs1" onclick="goto('/quote')">
+                    <div class="row valign-wrapper">
+                        <div class="col s2 primary">
+                            -
+                        </div>
+                        <div class="col s8 primary">
+                            <span id="quote-text">
+                                I need a
+                                <br />
+                                <span id="q" class="secondary">
+                                    Quote                   
+                                </span>
+                            </span>                        
+                        </div>
+                        <div class="col s2 primary">
+                            -
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <img class="responsive-img" src="assets/site-img/Splash - Logo.png" />              
+        </div>
+        <div class="col s4">
+            <div class="container">
+                <div id="stuff-card" class="card-panel white primary-boarder rcorners title fs1" onclick="goto('/stuff')">
+                    <div class="row valign-wrapper">
+                        <div class="col s1 m2 primary">
+                            -
+                        </div>
+                        <div class="col s10 m8 primary">
+                            <span id="stuff-text">
+                                Show me
+                                <br />
+                                <span id="s" class="secondary">
+                                    Stuff                   
+                                </span>
+                            </span>                        
+                        </div>
+                        <div class="col s1 m2 primary">
+                            -
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>            
+    </div>
+    <div class="center-align">
+        <h4 id="title" class="primary title">- All Things Creative -</h4>
+    </div>
+
+    <!--JavaScript Imports-->
+    <script type="text/javascript" src="assets/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#title').delay(500).fadeIn(2000);
+        });
+
+        // Color change for main buttons
+        $("#quote-card").hover(function(){
+           $("#quote-text").css("color", "white");
+           $("#q").css("color", "#C7A16D");
+        }, function() {
+            $("#quote-text").css("color", "#C7A16D");
+            $("#q").css("color", "#4E596E");
+        });
+
+        $("#stuff-card").hover(function(){
+           $("#stuff-text").css("color", "white");
+           $("#s").css("color", "#C7A16D");
+        }, function() {
+            $("#stuff-text").css("color", "#C7A16D");
+            $("#s").css("color", "#4E596E");
+        });
+
+
+
+
+        //-------------------------------- FUNCTIONS --------------------------------
+        function goto(url) {
+            window.location = url;
+        }
+    </script>
+</body>
+
+</html>
