@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <!--Import Google Icon Font-->
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" />
     <link type="text/css" rel="stylesheet" href="assets/css/custom.css" />
@@ -31,7 +31,7 @@
             <div class="row valign-wrapper primary-boarder rcorners">
             {% endif %}           
             <div class="col s3">
-                <img class="materialboxed responsive-img" data-caption="{{ myimage.basename }}" src="{{ myimage.path }}" />
+                <img class="materialboxed responsive-img" data-caption="{{ myimage.basename }}" src="/ED/{{ myimage.path }}" />
             </div>
             {% if value == 0 or forloop.last %}
             </div>
