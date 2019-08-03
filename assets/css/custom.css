@@ -22,7 +22,7 @@
 }
 
 .stuff-section {
-    min-height: 75vh;
+    min-height: 80vh;
 }
 
 .rcorners {
@@ -40,6 +40,15 @@
     max-height: 200px;
     max-width: 200px;
 }
+
+.full-height {
+    vertical-align: middle;
+}
+
+.c_hide {
+    display: none;
+}
+
 
 /* --------------------------------- COLOURS --------------------------------- */
 .primary {
@@ -61,17 +70,3 @@
 .secondary-background {
     background-color: #4E596E !important;
 }
-
-/* --------------------------------- ID TAGS --------------------------------- */
-#title {
-    display: none;
-}
-
-#options {
-    display: none;
-}
-
-#content {
-    display: none;
-}
-

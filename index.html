@@ -19,10 +19,12 @@ permalink: /
 <body class="font">
 
     <div class="section white empty-index"></div>
-    <div class="row center-align valign-wrapper full-height">
+
+    <!-- Quote Button -->
+    <div class="row center-align valign-wrapper">
         <div class="col s4">
             <div class="container">
-                <div id="quote-card" class="card-panel white primary-boarder rcorners title fs1" onclick="goto('/ED/quote')">
+                <div id="quote-card" class="card-panel white primary-boarder rcorners title fs1 c_hide" onclick="goto('/ED/quote')">
                     <div class="row valign-wrapper">
                         <div class="col s2 primary">
                             -
@@ -43,12 +45,16 @@ permalink: /
                 </div>
             </div>
         </div>
+
+        <!-- Logo Column -->
         <div class="col s4">
-            <img class="responsive-img" src="assets/site-img/Splash - Logo.png" />              
+            <img id="logo" class="responsive-img c_hide" src="assets/site-img/Splash - Logo.png" />              
         </div>
+
+        <!-- Stuff Button -->
         <div class="col s4">
             <div class="container">
-                <div id="stuff-card" class="card-panel white primary-boarder rcorners title fs1" onclick="goto('/ED/stuff')">
+                <div id="stuff-card" class="card-panel white primary-boarder rcorners title fs1 c_hide" onclick="goto('/ED/stuff')">
                     <div class="row valign-wrapper">
                         <div class="col s1 m2 primary">
                             -
@@ -70,8 +76,10 @@ permalink: /
             </div>
         </div>            
     </div>
-    <div class="center-align">
-        <h4 id="title" class="primary title">- All Things Creative -</h4>
+
+    <!-- Centered Header -->
+    <div class="section center-align">
+        <h4 id="title" class="primary title c_hide">- All Things Creative -</h4>
     </div>
 
     <!--JavaScript Imports-->
@@ -81,9 +89,13 @@ permalink: /
     <script>
         $(document).ready(function () {
             $('#title').delay(500).fadeIn(2000);
+            $('#logo').delay(500).fadeIn(2000);
+            $('#quote-card').delay(1500).fadeIn(2000);
+            $('#stuff-card').delay(1500).fadeIn(2000);
+
         });
 
-        // Color change for main buttons
+        // Color change for index page buttons
         $("#quote-card").hover(function(){
            $("#quote-text").css("color", "white");
            $("#q").css("color", "#C7A16D");

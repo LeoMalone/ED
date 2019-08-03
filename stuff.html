@@ -18,12 +18,12 @@
 
     <!-- PAGE TITLE -->
     <div class="section primary center-align">
-        <h2 id="title" class="title">- Check out <span class="secondary">E</span>D<sup>2</sup> client work <span class="secondary">&</span> our own projects -</h2>
+        <h3 id="title" class="title c_hide">- Check out <span class="secondary">E</span>D<sup>2</sup> client work <span class="secondary">&</span> our own projects -</h3>
     </div>
 
     <!-- PHOTO ITERATOR - from assets/img -->
     <div class="section secondary-background center-align stuff-section">
-        <div id="content" class="container">
+        <div id="content" class="container c_hide">
             {% assign image_files = site.static_files | where: "image", true %}
             {% for myimage in image_files %}
             {% assign value = forloop.index | modulo:4 %}
@@ -71,7 +71,7 @@
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#title').fadeIn(2000);
+            $('#title').delay(500).fadeIn(2000);
             $('#content').delay(1000).fadeIn(2000);
         });
     </script>

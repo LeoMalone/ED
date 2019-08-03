@@ -17,11 +17,11 @@
 <body class="font">
 
     <div class="section primary center-align">
-        <h2 id="title">- What type of <span class="secondary">project</span> do you have in mind? -</h2>
+        <h3 id="title" class="title c_hide">- What type of <span class="secondary">project</span> do you have in mind? -</h3>
     </div>
     <div class="section secondary center-align">
         <div class="container">
-            <ul id="options" class="collapsible popout" data-collapsible="accordion">
+            <ul id="options" class="collapsible popout c_hide" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header"><h5><i class="material-icons large left">brush</i>DESIGN</h5></div>
                     <div class="collapsible-body">
@@ -176,7 +176,7 @@
     <script>
         $(document).ready(function () {
             $('.collapsible').collapsible();
-            $('#title').fadeIn(2000);
+            $('#title').delay(500).fadeIn(2000);
             $('#options').delay(1000).fadeIn(2000);
         });
     </script>
