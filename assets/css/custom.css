@@ -18,11 +18,11 @@
 }
 
 .empty-index{
-    height: 10vh;
+    min-height: 100px;
 }
 
 .stuff-section {
-    min-height: 80vh;
+    min-height: 800px;
 }
 
 .rcorners {
@@ -36,13 +36,8 @@
     cursor: pointer !important;
 }
 
-.max-size {
-    max-height: 200px;
-    max-width: 200px;
-}
-
 .full-height {
-    vertical-align: middle;
+    min-height: 120px;
 }
 
 .c_hide {
