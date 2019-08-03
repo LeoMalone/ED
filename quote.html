@@ -170,15 +170,28 @@
         </div>
     </div>
 
+    
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large primary-background tooltipped" data-position="left" data-tooltip="Go to Stuff" onclick="goto('/ED/stuff')">
+            <i class="large material-icons">photo_library</i>
+        </a>
+    </div>
+
     <!--JavaScript Imports-->
     <script type="text/javascript" src="assets/js/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.collapsible').collapsible();
+            $('.tooltipped').tooltip();            
             $('#title').delay(500).fadeIn(2000);
             $('#options').delay(1000).fadeIn(2000);
         });
+
+        function goto(url) {
+            window.location = url;
+        }
     </script>
 </body>
 </html>
