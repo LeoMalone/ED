@@ -28,7 +28,7 @@
             {% for myimage in image_files %}
             {% assign value = forloop.index | modulo:4 %}
             {% if value == 1 %}
-            <div class="row valign-wrapper primary-boarder rcorners">
+            <div class="row valign-wrapper primary-boarder rcorners img-template">
             {% endif %}           
             <div class="col s3">
                 <img class="materialboxed responsive-img" data-caption="{{ myimage.basename }}" src="/ED/{{ myimage.path }}" />

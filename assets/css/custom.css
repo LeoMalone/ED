@@ -25,6 +25,10 @@
     min-height: 800px;
 }
 
+.full-height {
+    min-height: 120px;
+}
+
 .rcorners {
     border-radius: 10px;
 }
@@ -36,14 +40,13 @@
     cursor: pointer !important;
 }
 
-.full-height {
-    min-height: 120px;
-}
-
 .c_hide {
     display: none;
 }
 
+.img-template {
+    min-height: 300px;
+}
 
 /* --------------------------------- COLOURS --------------------------------- */
 .primary {
