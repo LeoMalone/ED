@@ -29,6 +29,10 @@
     min-height: 120px;
 }
 
+.full-view {
+    min-height: 100vh;
+}
+
 .rcorners {
     border-radius: 10px;
 }
