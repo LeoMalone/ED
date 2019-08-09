@@ -1,0 +1,49 @@
+<!-- SECTION TITLE -->
+<div id="stuff-title" class="section primary center-align">
+    <h3 class="title">- Check out <span class="secondary">E</span>D<sup>2</sup> client work <span class="secondary">&</span> our own projects -</h3>
+</div>
+
+<!-- PHOTO ITERATOR - from assets/img -->
+<div class="section secondary-background center-align stuff-section">
+    <div class="container">
+        {% assign image_files = site.static_files | where: "image", true %}
+        {% for myimage in image_files %}
+        {% assign value = forloop.index | modulo:4 %}
+        {% if value == 1 %}
+        <div class="row valign-wrapper primary-boarder rcorners img-template">
+        {% endif %}           
+        <div class="col s3">
+            <img class="materialboxed responsive-img" data-caption="{{ myimage.basename }}" src="/ED/{{ myimage.path }}" alt=""/>
+        </div>
+        {% if value == 0 or forloop.last %}
+        </div>
+        {% endif %}         
+        {% endfor %}
+    </div>
+</div>
+
+<!-- PREV AND CURRENT CLIENTS SECTION -->
+<div class="section white center-align">
+    <div class="container primary">      
+        <h4 class="title">- Our Clients <span class="secondary">&</span> Partners -</h4>
+        <div class="row valign-wrapper">
+            <div class="col s4">
+                <img class="responsive-img" src="assets/site-img/Our Clients - SRCHC.png" alt=""/>
+            </div>
+            <div class="col s4">
+                <img class="responsive-img" src="assets/site-img/Our Clients - HOVR.png" alt=""/>
+            </div>
+            <div class="col s4">
+                <img class="responsive-img" src="assets/site-img/Our Clients - TBT.png" alt=""/>
+            </div>
+        </div>
+        <div class="row valign-wrapper">
+            <div class="col s6">
+                <img class="responsive-img" src="assets/site-img/Our Clients - LambShep.png" alt=""/>
+            </div>
+            <div class="col s6">
+                <img class="responsive-img" src="assets/site-img/Our Clients - CReATe.png" alt=""/>
+            </div>
+        </div>
+    </div>
+</div>

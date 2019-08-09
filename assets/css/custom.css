@@ -1,5 +1,4 @@
 /* --------------------------------- CUSTOM CLASSES --------------------------------- */
-
 .font {
     font-family: 'Palatino Linotype';
 }
@@ -39,7 +38,7 @@
 
 .card-panel:hover {
     color: white !important;
-    background-color: #4E596E !important;
+    background-color: #0F1D3A !important;
     border: 2px solid white !important;
     cursor: pointer !important;
 }
@@ -52,23 +51,56 @@
     min-height: 300px;
 }
 
+.c_selected {
+    color: white !important;
+    background-color: #0F1D3A !important;
+    border: 2px solid white !important;
+    cursor: pointer !important;
+}
+
+
+
 /* --------------------------------- COLOURS --------------------------------- */
 .primary {
-    color: #C7A16D;
+    color: #C5B097;
 }
 
 .primary-background {
-    background-color: #C7A16D !important;
+    background-color: #C5B097 !important;
 }
 
 .primary-boarder {
-    border: 2px solid #C7A16D !important;
+    border: 2px solid #C5B097 !important;
 }
 
 .secondary {
-    color: #4E596E;
+    color: #4B566B;
 }
 
 .secondary-background {
-    background-color: #4E596E !important;
+    background-color: #4B566B !important;
+}
+
+
+/* --------------------------------- MATERIALIZE OVERRIDES --------------------------------- */
+textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #4B566B !important;
+    -webkit-box-shadow: 0 1px 0 0 #4B566B !important;
+    box-shadow: 0 1px 0 0 #4B566B !important;
+}
+
+input[type=checkbox]:checked+.lever {
+    background-color: #4B566B !important;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #C5B097 !important;
+}
+
+input[type=range]+.thumb {
+    background-color: #4B566B !important;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: #C5B097;
 }

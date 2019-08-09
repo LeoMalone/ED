@@ -1,0 +1,99 @@
+<!-- --------------------------- HIDDEN VIDEO FORMS --------------------------- -->
+<!-- COMMON FORM -->
+<form id="video_form" action="#" class="c_hide">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <h5>What is the estimated length of the video?</h5>
+            <div class="input-field inline">
+                <input id="video_length" type="number" class="validate">
+                <label for="video_length">Minutes</label>
+            </div>
+            <h5>Is this video part of a series?</h5>
+            <div class="switch">
+                <label>
+                    NO
+                    <input id="video_series_swicth" value="no" type="checkbox"
+                        onchange="toggle_checkbox_value('#video_series_swicth')">
+                    <span class="lever"></span>
+                    YES
+                </label>
+            </div>
+            <h5>Do you have your shooting location(s)...</h5>
+            <div class="switch">
+                <label>
+                    Not Scouted
+                    <input id="video_scouted_switch" value="no" type="checkbox"
+                        onchange="toggle_checkbox_value('#video_scouted_switch')">
+                    <span class="lever"></span>
+                    Scouted
+                </label>
+            </div>
+            <br />
+            <div class="switch">
+                <label>
+                    Not Booked
+                    <input id="video_booked_switch" value="no" type="checkbox"
+                        onchange="toggle_checkbox_value('#video_booked_switch')">
+                    <span class="lever"></span>
+                    Booked
+                </label>
+            </div>
+
+            <h5>Do you have a storyboard? (if you do not, would you like a storyboard developed?)</h5>
+            <div class="switch">
+                <label>
+                    NO
+                    <input id="video_strybrd_switch" value="no" type="checkbox"
+                        onchange="toggle_checkbox_value('#video_strybrd_switch')">
+                    <span class="lever"></span>
+                    YES
+                </label>
+            </div>
+            <br />
+            <div class="switch">
+                <label>
+                    NO
+                    <input id="video_sbdev_switch" value="no" type="checkbox"
+                        onchange="toggle_checkbox_value('#video_sbdev_switch')">
+                    <span class="lever"></span>
+                    YES
+                </label>
+            </div>
+            <br />
+            <h5>Please let us know about any other details for your video project:</h5>
+            <div class="input-field">
+                <textarea id="video_txt" class="materialize-textarea primary"></textarea>
+            </div>
+            <br />
+            <br />
+            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#video_form')">
+                Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </div>
+</form>
+
+<!-- VIDEO OTHER -->
+<form id="video_other" class="c_hide">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <h5>Please describe, as best you can, the kind of video project you have in mind.</h5>
+            <div class="input-field">
+                <textarea id="video_other_txt" class="materialize-textarea primary"></textarea>
+            </div>
+            <br />
+            <h5>What is the estimated final length of the video you need?</h5>
+            <div class="input-field inline">
+                <input id="vid_other_length" type="number" class="validate">
+                <label for="vid_other_length">Minutes</label>
+            </div>
+            <br />
+            <br />
+            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#video_other')">
+                Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </div>
+</form>

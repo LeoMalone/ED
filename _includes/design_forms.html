@@ -1,0 +1,109 @@
+<!-- --------------------------- HIDDEN DESIGN FORMS --------------------------- -->
+<!-- ICONS -->
+<form id="icons" class="c_hide">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <h5>How many icons do you need?</h5>
+            <div class="input-field inline">
+                <input id="num_icons" type="number" class="validate">
+            </div>
+            <br />
+            <br />
+            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#icons')">
+                Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </div>
+</form>
+<!-- BRANDING/LOGO -->
+<form id="brand_logo" action="#" class="c_hide">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <h5>How many options would you like to see?</h5>
+            <div class="input-field inline">
+                <input id="num_options" type="number" class="validate">
+            </div>
+            <br />
+            <h5>Do you have a colour scheme in mind?</h5>
+            <div class="switch">
+                <label>
+                    NO
+                    <input id="col_scheme_switch" type="checkbox" value=""
+                        onclick="toggle_checkbox_value('#col_scheme_switch', 'Yes')">
+                    <span class="lever"></span>
+                    YES
+                </label>
+            </div>
+            <br />
+            <h5>Do you have any reference images to give us a sense of what you’re after?</h5>
+            <div class="switch">
+                <label>
+                    NO
+                    <input id="ref_img_switch" type="checkbox" value=""
+                        onclick="toggle_checkbox_value('#ref_img_switch', 'Yes')"
+                        onchange="other_text_display('#ref_img_switch', '#ref_img')">
+                    <span class="lever"></span>
+                    YES
+                </label>
+            </div>
+            <div id="ref_img" class="file-field input-field c_hide">
+                <div class="btn primary-background">
+                    <span>File</span>
+                    <input type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input id="brand_ref_img" class="file-path validate" type="text"
+                        placeholder="Upload one or more files">
+                </div>
+            </div>
+            <br />
+            <br />
+            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#brand_logo')">
+                Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </div>
+</form>
+<!-- CONCEPT LAYOUT -->
+<form id="concept_layout" class="c_hide">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <h5>Please describe, as best you can, the kind of project you’re looking to pitch.</h5>
+            <div class="input-field">
+                <textarea id="des_cp_text" class="materialize-textarea primary"></textarea>
+            </div>
+            <br />
+            <br />
+            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#concept_layout')">
+                Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </div>
+</form>
+<!-- DESIGN OTHER -->
+<form id="design_other" class="c_hide">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <h5>Please describe, as best you can, the kind of video project you have in mind.</h5>
+            <div class="input-field">
+                <textarea id="design_other_txt" class="materialize-textarea primary"></textarea>
+            </div>
+            <br />
+            <h5>What is the estimated final length of the video you need?</h5>
+            <div class="input-field inline">
+                <input id="design_other_length" type="number" class="validate">
+                <label for="design_other_length">Minutes</label>
+            </div>
+            <br />
+            <br />
+            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#design_other')">
+                Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </div>
+</form>
+<!-- ---------------------------------------------------------------------- -->
