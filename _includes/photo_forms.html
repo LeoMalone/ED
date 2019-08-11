@@ -1,127 +1,137 @@
 <!-- --------------------------- HIDDEN PHOTO FORMS --------------------------- -->
 <!-- HEADSHOTS -->
-<form id="photo_head" action="#" class="c_hide">
-    <div class="row center-align">
+<div id="photo_head" action="#" class="c_hide">
+    <div class="row">
         <div class="col s6 offset-s3">
-            <h5>How many subjects need to be photographed?</h5>
-            <div class="input-field inline">
-                <input id="num_ppl" type="number" class="validate">
+            <div class="card">
+                <div class="card-content white-text">
+                    <span class="card-title secondary">How many subjects need to be photographed?</span>
+                    <div class="input-field inline">
+                        <input id="num_ppl" type="number" class="validate">
+                    </div>
+                    <br />
+                    <span class="card-title secondary">How many looks/options per subject would you like?</span>
+                    <div class="input-field inline">
+                        <input id="num_looks" type="number" class="validate">
+                    </div>
+                    <br />
+                    <br />
+                    <span class="card-title secondary">Would you like simple lighting retouches or airbrushing on the
+                        final products?</span>
+                    <div class="switch">
+                        <label>
+                            NO
+                            <input id="photo_lighting_switch" value="No" type="checkbox"
+                                onchange="toggle_checkbox_value('#photo_lighting_switch', 'Yes', 'No')">
+                            <span class="lever"></span>
+                            YES
+                        </label>
+                    </div>
+                    <br />
+                    <br />
+                    <span class="card-title secondary">Would you like make up and wardrobe available at the
+                        shoot?</span>
+                    <div class="switch">
+                        <label>
+                            NO
+                            <input id="photo_wardrobe_switch" value="No" type="checkbox"
+                                onchange="toggle_checkbox_value('#photo_wardrobe_switch', 'Yes', 'No')">
+                            <span class="lever"></span>
+                            YES
+                        </label>
+                    </div>
+                    <br />
+                    <br />
+                    <span class="card-title secondary">Do you have a preferred shooting location?</span>
+                    <div class="switch">
+                        <label>
+                            NO
+                            <input id="photo_location_switch" value="No" type="checkbox"
+                                onchange="toggle_checkbox_value('#photo_location_switch', 'Yes', 'No')">
+                            <span class="lever"></span>
+                            YES
+                        </label>
+                    </div>
+                    <br />
+                    <br />
+                    <span class="card-title secondary">Do you require a studio setting?</span>
+                    <div class="switch">
+                        <label>
+                            NO
+                            <input id="photo_studio_switch" value="No" type="checkbox"
+                                onchange="toggle_checkbox_value('#photo_studio_switch', 'Yes', 'No')">
+                            <span class="lever"></span>
+                            YES (*studio rental is subject to additional fees)
+                        </label>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_head')">
+                        Submit
+                        <i class="material-icons right">send</i>
+                    </a>
+                </div>
             </div>
-
-            <br />
-            <h5>How many looks/options per subject would you like?</h5>
-            <div class="input-field inline">
-                <input id="num_looks" type="number" class="validate">
-            </div>
-
-            <br />
-            <h5>Would you like simple lighting retouches or airbrushing on the final products?</h5>
-            <div class="switch">
-                <label>
-                    NO
-                    <input id="photo_lighting_switch" value="no" type="checkbox"
-                    onchange="toggle_checkbox_value('#photo_lighting_switch', 'Yes')">
-                    <span class="lever"></span>
-                    YES
-                </label>
-            </div>
-
-            <br />
-            <h5>Would you like make up and wardrobe available at the shoot?</h5>
-            <div class="switch">
-                <label>
-                    NO
-                    <input id="photo_wardrobe_switch" value="no" type="checkbox"
-                    onchange="toggle_checkbox_value('#photo_wardrobe_switch', 'Yes')">
-                    <span class="lever"></span>
-                    YES
-                </label>
-            </div>
-
-            <br />
-            <h5>Do you have a preferred shooting location?</h5>
-            <div class="switch">
-                <label>
-                    NO
-                    <input id="photo_location_switch" value="no" type="checkbox"
-                    onchange="toggle_checkbox_value('#photo_location_switch', 'Yes')">
-                    <span class="lever"></span>
-                    YES
-                </label>
-            </div>
-
-            <br />
-            <h5>Do you require a studio setting?</h5>
-            <div class="switch">
-                <label>
-                    NO
-                    <input id="photo_studio_switch" value="no" type="checkbox"
-                    onchange="toggle_checkbox_value('#photo_studio_switch', 'Yes')">
-                    <span class="lever"></span>
-                    YES (*studio rental is subject to additional fees)
-                </label>
-            </div>
-            <br />
-            <br />
-            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_head')">
-                Submit
-                <i class="material-icons right">send</i>
-            </a>
         </div>
     </div>
-</form>
+</div>
 
 <!-- EVENTS -->
 <form id="photo_events" action="#" class="c_hide">
     <div class="row">
         <div class="col s6 offset-s3">
-            <h5>What is the estimated number of final deliverables (photos, panoramas, etc.) you’re
-                looking for?</h5>
-            <div class="input-field inline">
-                <input id="photo_num_deliv" type="number" class="validate">
+            <div class="card">
+                <div class="card-content white-text">
+                    <span class="card-title secondary">What is the estimated number of final deliverables (photos,
+                        panoramas, etc.) you’re
+                        looking for?</span>
+                    <div class="input-field inline">
+                        <input id="photo_num_deliv" type="number" class="validate">
+                    </div>
+                    <br />
+                    <span class="card-title secondary">What is the duration of the event?</span>
+                    <div class="input-field inline">
+                        <input id="photo_event_length" type="number" class="validate">
+                    </div>
+                    <br />
+                    <span class="card-title secondary">What kind of event is it?</span>
+                    <select id="photo_events_select" class="browser-default secondary"
+                        onchange="other_text_display('#photo_events_select', '#photo_events_other_div')">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Concert">Concert</option>
+                        <option value="Corporate Function">Corporate Function</option>
+                        <option value="Sporting Event">Sporting Event</option>
+                        <option value="Festival">Festival</option>
+                        <option value="Promotion/Brand Activation">Promotion/Brand Activation</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div id="photo_events_other_div" class="input-field c_hide">
+                        <input id="photo_events_other" type="text" class="validate">
+                        <label for="photo_events_other">Please explain the event</label>
+                    </div>
+                    <br />
+                    <span class="card-title secondary">What are the final deliverables you would like to receive?</span>
+                    <div class="input-field">
+                        <input id="final_del" type="text" class="validate">
+                    </div>
+                    <span class="card-title secondary">Would travel be required?</span>
+                    <div class="switch">
+                        <label>
+                            NO
+                            <input id="photo_travel_switch" value="No" type="checkbox"
+                                onchange="toggle_checkbox_value('#photo_travel_switch', 'Yes', 'No')">
+                            <span class="lever"></span>
+                            YES
+                        </label>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_events')">
+                        Submit
+                        <i class="material-icons right">send</i>
+                    </a>
+                </div>
             </div>
-            <br />
-            <h5>What is the duration of the event?</h5>
-            <div class="input-field inline">
-                <input id="photo_event_length" type="number" class="validate">
-            </div>
-            <br />
-            <h5>What kind of event is it?</h5>
-            <select id="photo_events_select" class="browser-default" onchange="other_text_display('#photo_events_select', '#photo_events_other_div')">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="Concert">Concert</option>
-                <option value="Corporate Function">Corporate Function</option>
-                <option value="Sporting Event">Sporting Event</option>
-                <option value="Festival">Festival</option>
-                <option value="Promotion/Brand Activation">Promotion/Brand Activation</option>
-                <option value="Other">Other</option>
-            </select>
-            <div id="photo_events_other_div" class="input-field c_hide">
-                <input id="photo_events_other" type="text" class="validate">
-                <label for="photo_events_other">Please explain the event</label>
-            </div>
-
-            <br />
-            <div class="input-field">
-                <h5>What are the final deliverables you would like to receive?</h5>
-                <input id="final_del" type="text" class="validate">
-            </div>
-            <h5>Would travel be required?</h5>
-            <div class="switch">
-                <label>
-                    NO
-                    <input id="photo_travel_switch" value="no" type="checkbox"
-                    onchange="toggle_checkbox_value('#photo_travel_switch', 'Yes')">
-                    <span class="lever"></span>
-                    YES
-                </label>
-            </div>
-            <br />
-            <br />
-            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_events')">
-                Submit
-                <i class="material-icons right">send</i>
-            </a>
         </div>
     </div>
 </form>
@@ -130,16 +140,21 @@
 <form id="photo_other" class="c_hide">
     <div class="row">
         <div class="col s6 offset-s3">
-            <h5>Please describe, as best you can, the kind of photo project you have in mind.</h5>
-            <div class="input-field">
-                <textarea id="photo_other_text" class="materialize-textarea primary"></textarea>
+            <div class="card">
+                <div class="card-content white-text">
+                    <span class="card-title secondary">Please describe, as best you can, the kind of photo project you
+                        have in mind.</span>
+                    <div class="input-field">
+                        <textarea id="photo_other_text" class="materialize-textarea primary"></textarea>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_other')">
+                        Submit
+                        <i class="material-icons right">send</i>
+                    </a>
+                </div>
             </div>
-            <br />
-            <br />
-            <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_other')">
-                Submit
-                <i class="material-icons right">send</i>
-            </a>
         </div>
     </div>
 </form>

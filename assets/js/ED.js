@@ -1,61 +1,54 @@
 $(document).ready(function () {
-    $('.collapsible').collapsible();
-    $('#title').delay(500).fadeIn(2000);
-    $('#logo').delay(500).fadeIn(2000);
-    $('#quote-card').delay(1500).fadeIn(2000);
-    $('#stuff-card').delay(1500).fadeIn(2000);
-});
+    // PROJECT BUTTONS INIT
+    $("#design_b").attr("src", btnInfo["#design_b"].off);
+    $("#video_b").attr("src", btnInfo["#video_b"].off);
+    $("#photo_b").attr("src", btnInfo["#photo_b"].off);
+    $("#writing_b").attr("src", btnInfo["#writing_b"].off);
+    // DESIGN BUTTONS INIT
+    $("#des_icon_b").attr("src", btnInfo["#des_icon_b"].off);
+    $("#des_brand_b").attr("src", btnInfo["#des_brand_b"].off);
+    $("#des_cl_b").attr("src", btnInfo["#des_cl_b"].off);
+    $("#des_other_b").attr("src", btnInfo["#des_other_b"].off);
+    // VIDEO BUTTONS INIT
+    $("#vid_inter_b").attr("src", btnInfo["#vid_inter_b"].off);
+    $("#vid_prom_b").attr("src", btnInfo["#vid_prom_b"].off);
+    $("#vid_mv_b").attr("src", btnInfo["#vid_mv_b"].off);
+    $("#vid_sfilm_b").attr("src", btnInfo["#vid_sfilm_b"].off);
+    $("#vid_concp_b").attr("src", btnInfo["#vid_concp_b"].off);
+    $("#vid_other_b").attr("src", btnInfo["#vid_other_b"].off);
+    // PHOTO BUTTONS INIT
+    $("#photo_head_b").attr("src", btnInfo["#photo_head_b"].off);
+    $("#photo_events_b").attr("src", btnInfo["#photo_events_b"].off);
+    $("#photo_other_b").attr("src", btnInfo["#photo_other_b"].off);
+    // WRITING BUTTONS INIT
+    $("#writin_copyw_b").attr("src", btnInfo["#writin_copyw_b"].off);
+    $("#writing_pr_b").attr("src", btnInfo["#writing_pr_b"].off);
+    $("#writing_other_b").attr("src", btnInfo["#writing_other_b"].off);
 
-$("#quote-card").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#quote-title").offset().top
-    }, 2000);
+    $(".collapsible").collapsible();
+    $("#title").delay(500).fadeIn(2000);
+    $("#logo").delay(500).fadeIn(2000);
+    $("#quote-card").delay(1500).fadeIn(2000);
+    $("#stuff-card").delay(1500).fadeIn(2000);
 });
-
-$("#stuff-card").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#stuff-title").offset().top
-    }, 2000);
-});
-
-// Color change for index page buttons
-$("#quote-card").hover(function(){
-   $("#quote-text").css("color", "white");
-   $("#q").css("color", "#C7A16D");
-}, function() {
-    $("#quote-text").css("color", "#C7A16D");
-    $("#q").css("color", "#4E596E");
-});
-
-$("#stuff-card").hover(function(){
-   $("#stuff-text").css("color", "white");
-   $("#s").css("color", "#C7A16D");
-}, function() {
-    $("#stuff-text").css("color", "#C7A16D");
-    $("#s").css("color", "#4E596E");
-});
-
 
 // -------------------------------- FUNCTIONS -------------------------------------
 // QUOTE LOGIC --------------
-var currentSelections = {
-    form_id: null, 
-    button_id: null, 
-    others: [], 
-    form_data: [] 
-};
 
 function quote_selection(formId, buttonID) {
-    if(currentSelections) {
+    if(currentSelections.button_id != buttonID)  {
         $(currentSelections.form_id).hide();
         $(currentSelections.form_id).trigger("reset");
-        $(currentSelections.button_id).removeClass("c_selected");
+        $(formId).fadeIn(500);
+        currentSelections.form_id = formId;
+        if(currentSelections.button_id != null) {
+            toggle_button_selected(currentSelections.button_id);
+            currentSelections.button_id = null;
+        }
+        currentSelections.button_id = buttonID;
+        toggle_button_selected(buttonID);        
+        hide_other_inputs();
     }
-    $(buttonID).addClass("c_selected");
-    $(formId).fadeIn(1000);
-    currentSelections.form_id = formId;
-    currentSelections.button_id = buttonID;
-    hide_other_inputs();
 }
 
 function hide_other_inputs() {
@@ -66,13 +59,28 @@ function hide_other_inputs() {
     currentSelections.others = [];
 }
 
-function project_change() {
-    if(currentSelections) {
+
+function project_change(proj_button, bcontainer_id) {
+    if(currentSelections.proj_button != proj_button) {
+        if(currentSelections.proj_button != null) {
+            toggle_button_selected(currentSelections.proj_button);
+        }
+        if(currentSelections.button_id != null) {
+            toggle_button_selected(currentSelections.button_id);
+            currentSelections.button_id = null;
+        }
         $(currentSelections.form_id).hide();
         $(currentSelections.form_id).trigger("reset");
-        $(currentSelections.button_id).removeClass("c_selected");
+        if(bcontainer_id != currentSelections.open_buttons) {
+            $(currentSelections.open_buttons).hide();
+        }
         hide_other_inputs();
+        $(bcontainer_id).fadeIn(500);
+        currentSelections.open_buttons = bcontainer_id;
+        toggle_button_selected(proj_button);
+        currentSelections.proj_button = proj_button;
     }
+
 }
 
 function other_text_display(inputId, textID) {
@@ -109,25 +117,76 @@ function form_submit(formID) {
             values[this.id] = $(this).val();
         });
         currentSelections.form_data = values;
+        console.log(currentSelections.form_data);
         create_new_pdf();
     }
 }
 
 function create_new_pdf() {
-    var doc = new jsPDF();
+    var pdf = new jsPDF("p", "pt", "a4");
+    // Optional - set properties on the document
+    pdf.setProperties({
+        title: "ED - QUOTE",
+        subject: "Auto generated pdf for ED quote form",
+        creator: "ED"
+    });
+    pdf.setFont("Iowan Old Style");
+    pdf.setFontSize(15);
+    pdf.setFillColor(197, 176, 151);
+    pdf.roundedRect(10, 10, 575, 100, 10, 10, "F");
+    pdf.addImage(imgData, "JPEG", 30, 30, 108, 110);
+
+    pdf.setDrawColor(209, 207, 208);
+    pdf.setLineWidth(0.1);
+    pdf.line(155, 85, 540, 85); // horizontal line
+    pdf.line(155, 35, 540, 35); // horizontal line
+
+    pdf.setFontSize(30);
+    pdf.setTextColor(75, 86, 107);
+    pdf.text("- QUOTE APPLICATION -", 165, 70);
+    pdf.setFontSize(15);
     
-    for (let index = 0; index < currentSelections.form_data.length; ++index) {
-        console.log(currentSelections.form_data);
+    let q_offset = 200;
+    let a_offset = 230;
+    for(let x = 0; x < pdfText[currentSelections.form_id].length; x++) {
+        let tmp_q = pdfText[currentSelections.form_id][x];
+        let splitText = pdf.splitTextToSize(tmp_q, 530);
+        pdf.text(splitText, 40, q_offset);
+
+        // let tmp = currentSelections.form_data[x];
+        // let splitTextAns = pdf.splitTextToSize(tmp, 530);
+        // pdf.text(splitTextAns, 40, a_offset);
+        q_offset += 80;
     }
-    
-    //doc.save('two-by-four.pdf');
+
+    // var i = 40;
+    // for (const [k, v] of Object.entries(currentSelections.form_data)) {
+    //     pdf.text(v, 40, i);
+    //     i += 40;        
+    // }    
+
+    var iframe = document.getElementById("prev_frame");
+    console.log(iframe);    
+    iframe.src = pdf.output("datauristring");
 }
 
-function toggle_checkbox_value(inputId, newVal) {
-    if($(inputId).is(':checked')) {
-        $(inputId).val(newVal);
+function toggle_checkbox_value(inputId, newValOn, newValOff) {
+    if($(inputId).is(":checked")) {
+        $(inputId).val(newValOn);
     } else {
-        $(inputId).val("");
+        $(inputId).val(newValOff);
+    }
+}
+
+function toggle_button_selected(id) {
+    if(btnInfo[id].isOn) {
+        $(id).attr("src", btnInfo[id].off);
+        btnInfo[id].isOn = false;
+        console.log("OFF");
+    } else {
+        $(id).attr('selected');
+        $(id).attr("src", btnInfo[id].on);
+        btnInfo[id].isOn = true;
     }
 }
 

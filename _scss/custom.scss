@@ -1,0 +1,74 @@
+/* --------------------------------- CUSTOM CLASSES --------------------------------- */
+.subheading-font {
+    font-family: 'Iowan Old Style';
+}
+
+.title-font {
+    font-family: 'Acier BAT Gris';
+}
+
+.quote-option-text {
+    font-family: 'Acier BAT Noir'; 
+}
+
+.fs1 {
+    font-size: 2em;
+}
+
+.fs2 {
+    font-size: 1.33em;
+}
+
+.title {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.full-view {
+    min-height: 100vh;
+}
+
+.rcorners {
+    border-radius: 10px;
+}
+
+.c_button:hover {
+    cursor: pointer !important;
+}
+
+.c_hide {
+    display: none;
+}
+
+.img-template {
+    min-height: 300px;
+}
+
+.quote-title-size {
+    min-height: 150px;
+}
+
+
+/* --------------------------------- COLOURS --------------------------------- */
+.primary {
+    color: #C5B097;
+}
+
+.primary-background {
+    background-color: #C5B097 !important;
+}
+
+.primary-boarder {
+    border: 2px solid #C5B097 !important;
+}
+
+.secondary {
+    color: #4B566B;
+}
+
+.secondary-background {
+    background-color: #4B566B !important;
+}
+
+
+/* --------------------------------- MATERIALIZE OVERRIDES --------------------------------- */

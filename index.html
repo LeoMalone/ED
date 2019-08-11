@@ -13,8 +13,7 @@ stuff: stuff.html
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" />
-    <link type="text/css" rel="stylesheet" href="assets/css/custom.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/main.css" />
     <title>{{ page.title }}</title>
 </head>
 
@@ -25,60 +24,24 @@ stuff: stuff.html
         <!-- Quote Button -->
         <div class="col s4">
             <div class="container">
-                <div id="quote-card" class="card-panel white z-depth-0 primary-boarder rcorners title fs1 c_hide">
-                    <div class="row valign-wrapper">
-                        <div class="col s2 primary">
-                            -
-                        </div>
-                        <div class="col s8 primary">
-                            <span id="quote-text">
-                                I need a
-                                <br />
-                                <span id="q" class="secondary">
-                                    Quote                   
-                                </span>
-                            </span>                        
-                        </div>
-                        <div class="col s2 primary">
-                            -
-                        </div>
-                    </div>                
-                </div>
+                <img id="quote-card" class="responsive-img c_hide c_button" src="assets/site-img/Splash - Quote.png" alt="" width="319" height="160"/>
             </div>
         </div>
 
         <!-- Logo Column -->
         <div class="col s4">
-            <img id="logo" class="responsive-img c_hide" src="assets/site-img/Splash - Logo.png" />
+            <img id="logo" class="responsive-img c_hide" src="assets/site-img/Splash - Logo.png" alt=""/>
 
              <!-- Centered Header -->
             <div class="section center-align">
-                <h4 id="title" class="primary title c_hide">- All Things Creative -</h4>
+                <h4 id="title" class="title-font primary title c_hide">- All Things Creative -</h4>
             </div>            
         </div>
 
         <!-- Stuff Button -->
         <div class="col s4">
             <div class="container">
-                <div id="stuff-card" class="card-panel white z-depth-0 primary-boarder rcorners title fs1 c_hide">
-                    <div class="row valign-wrapper">
-                        <div class="col s1 m2 primary">
-                            -
-                        </div>
-                        <div class="col s10 m8 primary">
-                            <span id="stuff-text">
-                                Show me
-                                <br />
-                                <span id="s" class="secondary">
-                                    Stuff                   
-                                </span>
-                            </span>                        
-                        </div>
-                        <div class="col s1 m2 primary">
-                            -
-                        </div>
-                    </div>                
-                </div>
+                <img id="stuff-card" class="responsive-img c_hide c_button" src="assets/site-img/Splash - Work.png" alt="" width="319" height="160"/>
             </div>
         </div>            
     </div>
@@ -131,6 +94,8 @@ stuff: stuff.html
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script type="text/javascript" src="assets/js/jspdf.min.js"></script>
     <script type="text/javascript" src="assets/js/ED.js"></script>
-
+    <script type="text/javascript" src="assets/js/logo-base64.js"></script>
+    <script type="text/javascript" src="assets/js/ED-data.js"></script>
+    <script type="text/javascript" src="assets/js/ED-buttons.js"></script>
 </body>
 </html>
