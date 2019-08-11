@@ -25,7 +25,8 @@ $(document).ready(function () {
     $("#writing_pr_b").attr("src", btnInfo["#writing_pr_b"].off);
     $("#writing_other_b").attr("src", btnInfo["#writing_other_b"].off);
 
-    $(".collapsible").collapsible();
+    $('select').formSelect();
+    $('textarea#des_cp_text', 'textarea#design_other_txt').characterCounter();
     $("#title").delay(500).fadeIn(2000);
     $("#logo").delay(500).fadeIn(2000);
     $("#quote-card").delay(1500).fadeIn(2000);
@@ -84,42 +85,31 @@ function project_change(proj_button, bcontainer_id) {
 }
 
 function other_text_display(inputId, textID) {
-    if($(inputId).val() == "Other" || $(inputId).val() == "Yes") {        
-        $(textID).show();
-        if(currentSelections.others.indexOf(textID) <= -1) {
-            currentSelections.others[currentSelections.others.length] = textID;
-        }
-    } else {
-        $(textID).hide();
-        if(currentSelections.others.indexOf(textID) !== -1) {
-            var index = currentSelections.others.indexOf(textID);
-            currentSelections.others.splice(index, 1);
+    if(inputId != null && textID != null && $(inputId).val() != null) {
+        if($(inputId).val().includes("Other") || $(inputId).val() == "Yes") {        
+            $(textID).show();
+            if(currentSelections.others.indexOf(textID) <= -1) {
+                currentSelections.others[currentSelections.others.length] = textID;
+            }
+        } else {
+            $(textID).hide();
+            if(currentSelections.others.indexOf(textID) !== -1) {
+                var index = currentSelections.others.indexOf(textID);
+                currentSelections.others.splice(index, 1);
+            }
         }
     }
 }
 
 function form_submit(formID) {
-    if(formID == currentSelections.form_id) {
-        // get all the inputs into an arrays.
-        var $inputs = $(formID.concat(" :input"));
-        var $txtAreas = $(formID.concat(" textarea"));
-        var $selects = $(formID.concat(" select"));
-
-        //combine all arrays into single input array
-        var values = {};
-        $inputs.each(function() {
-            values[this.id] = $(this).val();
-        });
-        $txtAreas.each(function() {
-            values[this.id] = $(this).val();
-        });
-        $selects.each(function() {
-            values[this.id] = $(this).val();
-        });
-        currentSelections.form_data = values;
-        console.log(currentSelections.form_data);
-        create_new_pdf();
+    if(formID == currentSelections.form_id) {        
+        for(const [k, v] of Object.entries(formDict[currentSelections.form_id])) {
+            for(let i = 0; i < formDict[currentSelections.form_id][k].length; i++) {                
+                pdfText[currentSelections.form_id][k][i+1] = $(v[i]).val();
+            }        
+        }       
     }
+    create_new_pdf();
 }
 
 function create_new_pdf() {
@@ -145,25 +135,72 @@ function create_new_pdf() {
     pdf.setTextColor(75, 86, 107);
     pdf.text("- QUOTE APPLICATION -", 165, 70);
     pdf.setFontSize(15);
+
     
-    let q_offset = 200;
-    let a_offset = 230;
-    for(let x = 0; x < pdfText[currentSelections.form_id].length; x++) {
-        let tmp_q = pdfText[currentSelections.form_id][x];
-        let splitText = pdf.splitTextToSize(tmp_q, 530);
-        pdf.text(splitText, 40, q_offset);
+    
+    let offset = 200;
+    let rowHeight = 40;
+    for (const [k, v] of Object.entries(pdfText[currentSelections.form_id])) {        
+        for(let i = 0; i < v.length; i++) {
+            let tmp = pdfText[currentSelections.form_id][k][i];
+            let splitTextAns;
+            if(tmp != null) {
+                if(i == 0) {
+                    splitTextAns = pdf.splitTextToSize(tmp, 530);
+                    if((pdf.getTextDimensions(splitTextAns).h)*3 >= (820 - offset)) {
+                        pdf.addPage();
+                        offset = 50;
+                        pdf.text(splitTextAns, 40, offset);
+                    } else {
+                        pdf.text(splitTextAns, 40, offset);
+                    }
+                    
+                } else {
+                    splitTextAns = pdf.splitTextToSize(tmp, 490);                    
+                    if(((pdf.getTextDimensions(splitTextAns).h)*3) + offset > 850) {
+                        if(((pdf.getTextDimensions(splitTextAns).h)*3) >= 600) {
 
-        // let tmp = currentSelections.form_data[x];
-        // let splitTextAns = pdf.splitTextToSize(tmp, 530);
-        // pdf.text(splitTextAns, 40, a_offset);
-        q_offset += 80;
+                            var arr = splitTextAns,
+                            mid = Math.ceil(arr.length/2),
+                            obj = {
+                                left: arr.slice(0, mid),
+                                right: arr.slice(mid)
+                            };
+                            if((pdf.getTextDimensions(obj.left).h)*3 >= (820 - offset)) {
+                                pdf.addPage();
+                                offset = 50;
+                                pdf.text(obj.left, 60, offset);
+                                offset = offset + ((pdf.getTextDimensions(obj.left).h)*3);
+                                if((pdf.getTextDimensions(obj.right).h)*3 >= (820 - offset)) {
+                                    pdf.addPage();
+                                    offset = 50;
+                                    pdf.text(obj.right, 60, offset);
+                                } else {
+                                    pdf.text(obj.right, 60, offset);
+                                    offset = offset + ((pdf.getTextDimensions(obj.right).h)*3);
+                                }
+                            } else {
+                                pdf.text(obj.left, 60, offset);
+                                pdf.addPage();
+                                offset = 50;
+                                pdf.text(obj.right, 60, offset);
+                            }
+                            offset = offset + ((pdf.getTextDimensions(obj.right).h)*3);
+                            continue;
+                        } else {
+                            pdf.addPage();
+                            offset = 50;
+                        }
+                        
+                    } 
+                    pdf.text(splitTextAns, 60, offset);    
+                                 
+                }                               
+                offset = offset + ((pdf.getTextDimensions(splitTextAns).h)*3);                
+            }
+        }        
     }
-
-    // var i = 40;
-    // for (const [k, v] of Object.entries(currentSelections.form_data)) {
-    //     pdf.text(v, 40, i);
-    //     i += 40;        
-    // }    
+      
 
     var iframe = document.getElementById("prev_frame");
     console.log(iframe);    
@@ -182,7 +219,6 @@ function toggle_button_selected(id) {
     if(btnInfo[id].isOn) {
         $(id).attr("src", btnInfo[id].off);
         btnInfo[id].isOn = false;
-        console.log("OFF");
     } else {
         $(id).attr('selected');
         $(id).attr("src", btnInfo[id].on);

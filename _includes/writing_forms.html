@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-content white-text">
                     <span class="card-title secondary">What kind of project do you have in mind?</span>
-                    <select class="browser-default secondary">
+                    <select id="writing_copyw_projt">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="Short film">Short film</option>
                         <option value="Ad/Social Media">Ad/Social Media</option>
@@ -36,94 +36,43 @@
 <form id="writing_pr" class="c_hide">
     <div class="row">
         <div class="col s6 offset-s3">
-
             <div class="card">
                 <div class="card-content white-text">
                     <span class="card-title secondary">Which of the following media relations opportunities are you
                         interested in?</span>
                     <br />
-                    <div class="section container">
-                        <div class="row left-align">
-                            <div class="col s5 offset-s2">
-                                <input id="writing_pr_tv" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_tv', 'TV')" />
-                                <label for="writing_pr_tv">TV</label>
-                            </div>
-                            <div class="col s5">
-                                <input id="writing_pr_radio" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_radio', 'Radio')" />
-                                <label for="writing_pr_radio">Radio</label>
-                            </div>
-                        </div>
-                        <div class="row left-align">
-                            <div class="col s5 offset-s2">
-                                <input id="writing_pr_print" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_print', 'Print')" />
-                                <label for="writing_pr_print">Print</label>
-                            </div>
-                            <div class="col s5">
-                                <input id="writing_pr_dig" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_dig', 'Digital')" />
-                                <label for="writing_pr_dig">Digital</label>
-                            </div>
-                        </div>
-                        <div class="row left-align">
-                            <div class="col s6 offset-s2">
-                                <input id="writing_pr_o1" type="checkbox" value=""
-                                    onchange="other_text_display('#writing_pr_o1', '#writing_pr_o1_div')"
-                                    onclick="toggle_checkbox_value('#writing_pr_o1', 'Other')" />
-                                <label for="writing_pr_o1">Other</label>
-                            </div>
-                        </div>
-                        <div id="writing_pr_o1_div" class="input-field c_hide">
-                            <input id="writing_pr_o1_txt" type="text" class="validate">
-                        </div>
+                    <div class="input-field">
+                        <select multiple id="writing_pr_mediar" onchange="other_text_display('#writing_pr_mediar', '#writing_pr_o1_div')">
+                            <option value="" disabled>Choose your options</option>
+                            <option value="TV, ">TV</option>
+                            <option value="Print, ">Print</option>
+                            <option value="Radio, ">Radio</option>
+                            <option value="Digital, ">Digital</option>
+                            <option value="Other">Other</option>
+                        </select>                        
+                    </div>
+                    <div id="writing_pr_o1_div" class="input-field c_hide">
+                        <input id="writing_pr_o1_txt" type="text" class="validate">
+                        <label for="writing_pr_o1_txt">Please describe what you mean</label>
                     </div>
                     <br />
                     <br />
                     <span class="card-title secondary">Which of the following do you require?</span>
                     <br />
-                    <div class="container">
-                        <div class="row left-align">
-                            <div class="col s5 offset-s2">
-                                <input id="writing_pr_press" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_press', 'Press Release')" />
-                                <label for="writing_pr_press">Press Release</label>
-                            </div>
-                            <div class="col s5">
-                                <input id="writing_pr_mk" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_mk', 'Media Kit')" />
-                                <label for="writing_pr_mk">Media Kit</label>
-                            </div>
-                        </div>
-                        <div class="row left-align">
-                            <div class="col s5 offset-s2">
-                                <input id="writing_pr_dms" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_dms', 'Digital Media Strategy')" />
-                                <label for="writing_pr_dms">Digital Media Strategy</label>
-                            </div>
-                            <div class="col s5">
-                                <input id="writing_pr_bio" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_bio', 'Biography')" />
-                                <label for="writing_pr_bio">Biography</label>
-                            </div>
-                        </div>
-                        <div class="row left-align">
-                            <div class="col s5 offset-s2">
-                                <input id="writing_pr_mt" type="checkbox" value=""
-                                    onclick="toggle_checkbox_value('#writing_pr_mt', 'Media Training')" />
-                                <label for="writing_pr_mt">Media Training</label>
-                            </div>
-                            <div class="col s5">
-                                <input id="writing_pr_o2" type="checkbox" value=""
-                                    onchange="other_text_display('#writing_pr_o2', '#writing_pr_o2_div')"
-                                    onclick="toggle_checkbox_value('#writing_pr_o2', 'Other')" />
-                                <label for="writing_pr_o2">Other</label>
-                            </div>
-                        </div>
-                        <div id="writing_pr_o2_div" class="input-field c_hide">
-                            <input id="writing_pr_o2_txt" type="text" class="validate">
-                        </div>
+                    <div class="input-field">
+                        <select multiple id="writing_pr_req" onchange="other_text_display('#writing_pr_req', '#writing_pr_o2_div')">
+                            <option value="" disabled>Choose your options</option>
+                            <option value="Press Release, ">Press Release</option>
+                            <option value="Digital Media Strategy, ">Digital Media Strategy</option>
+                            <option value="Media Training, ">Media Training</option>
+                            <option value="Media Kit, ">Media Kit</option>
+                            <option value="Biography, ">Biography</option>
+                            <option id="writing_resc_other" value="Other">Other</option>
+                        </select>                        
+                    </div>
+                    <div id="writing_pr_o2_div" class="input-field c_hide">
+                        <input id="writing_pr_o2_txt" type="text" class="validate">
+                        <label for="writing_pr_o2_txt">Please Describe what else you require</label>
                     </div>
                 </div>
                 <div class="card-action">
