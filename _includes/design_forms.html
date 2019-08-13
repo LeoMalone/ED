@@ -7,14 +7,16 @@
                 <div class="card-content white-text">
                     <span class="card-title secondary">How many icons do you need?</span>
                     <div class="input-field inline">
-                        <input id="num_icons" type="number" class="validate">
+                        <input id="num_icons" name="num_icons" type="number" class="validate">
+                        <label for="num_icons">Number</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#des_icons')">
+                    <button id="des_icons_sub" type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                </button>
                 </div>
             </div>            
         </div>
@@ -28,7 +30,9 @@
                 <div class="card-content white-text">
                     <span class="card-title secondary">How many options would you like to see?</span>
                     <div class="input-field inline">
-                            <input id="num_options" type="number" class="validate">
+                            <input id="num_options" name="num_options" type="number" class="validate">
+                            <label for="num_options">Number</label>
+                            <span class="helper-text" data-error=""></span>
                         </div>
                         <br />
                         <br />
@@ -36,7 +40,7 @@
                         <div class="switch">
                             <label>
                                 NO
-                                <input id="col_scheme_switch" type="checkbox" value="No"
+                                <input id="col_scheme_switch" name="col_scheme_switch" type="checkbox" value="No"
                                     onclick="toggle_checkbox_value('#col_scheme_switch', 'Yes', 'No')">
                                 <span class="lever"></span>
                                 YES
@@ -48,7 +52,7 @@
                         <div class="switch">
                             <label>
                                 NO
-                                <input id="ref_img_switch" type="checkbox" value="No"
+                                <input id="ref_img_switch" name="ref_img_switch" type="checkbox" value="No"
                                     onclick="toggle_checkbox_value('#ref_img_switch', 'Yes', 'No')"
                                     onchange="other_text_display('#ref_img_switch', '#ref_img')">
                                 <span class="lever"></span>
@@ -65,14 +69,15 @@
                             <div class="file-path-wrapper">
                                 <input id="brand_ref_img" class="file-path validate" type="text"
                                     placeholder="Upload one or more files">
+                                    <span class="helper-text" data-error=""></span>
                             </div>
                         </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#des_brand_logo')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -86,14 +91,16 @@
                 <div class="card-content white-text">
                     <span class="card-title secondary">Please describe, as best you can, the kind of project you’re looking to pitch.</span>
                     <div class="input-field">
-                            <textarea id="des_cp_text" class="materialize-textarea primary" data-length="1500"></textarea>
-                        </div>
+                        <textarea id="des_cp_text" name="des_cp_text" class="materialize-textarea primary" data-length="2000"></textarea>
+                        <label for="des_cp_text">Project Pitch</label>
+                        <span class="helper-text" data-error=""></span>
+                    </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#des_concept_layout')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>            
         </div>
@@ -107,20 +114,23 @@
                 <div class="card-content white-text">
                     <span class="card-title secondary">Please describe, as best you can, the kind of video project you have in mind.</span>
                     <div class="input-field">
-                        <textarea id="design_other_txt" class="materialize-textarea primary" data-length="1500"></textarea>
+                        <textarea id="design_other_txt" name="design_other_txt" class="materialize-textarea primary" data-length="2000"></textarea>
+                        <label for="design_other_txt">Video Project</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <span class="card-title secondary">What is the estimated final length of the video you need?</span>
                     <div class="input-field inline">
-                        <input id="design_other_length" type="number" class="validate">
+                        <input id="design_other_length" name="design_other_length" type="number" class="validate">
                         <label for="design_other_length">Minutes</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#design_other')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>

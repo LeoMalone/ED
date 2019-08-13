@@ -18,13 +18,39 @@ stuff: stuff.html
 </head>
 
 <body class>
+        <div id="floating_btn" class="fixed-action-btn c_hide">
+            <a class="btn-floating btn-large">
+                <i class="large material-icons">format_align_center</i>
+            </a>
+            <ul>
+                <li>
+                    <a class="btn-floating primary-background tooltipped" onclick="scroll_to('top')"
+                        data-position="left" data-tooltip="Go to Top">
+                        <i class="material-icons">arrow_upward</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating tooltipped" onclick="scroll_to('#quote-title')"
+                        data-position="left" data-tooltip="Go to Quote">
+                        <i class="material-icons">format_quote</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating primary-background tooltipped" onclick="scroll_to('#stuff-title')"
+                        data-position="left" data-tooltip="Go to Stuff">
+                        <i class="material-icons">collections</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
     <!-- --------------------------------------- SPLASH ICON SECTION --------------------------------------- -->
     <div class="row center-align valign-wrapper full-view">
         <!-- Quote Button -->
         <div class="col s4">
             <div class="container">
-                <img id="quote-card" class="responsive-img c_hide c_button" src="assets/site-img/Splash - Quote.png" alt="" width="319" height="160"/>
+                <img id="quote-card" class="responsive-img c_hide c_button" src="assets/site-img/Splash - Quote.png" alt="" width="319" height="160"
+                    onclick="scroll_to('#quote-title')"/>
             </div>
         </div>
 
@@ -41,7 +67,8 @@ stuff: stuff.html
         <!-- Stuff Button -->
         <div class="col s4">
             <div class="container">
-                <img id="stuff-card" class="responsive-img c_hide c_button" src="assets/site-img/Splash - Work.png" alt="" width="319" height="160"/>
+                <img id="stuff-card" class="responsive-img c_hide c_button" src="assets/site-img/Splash - Work.png" alt="" width="319" height="160" 
+                    onclick="scroll_to('#stuff-title')"/>
             </div>
         </div>            
     </div>
@@ -91,11 +118,13 @@ stuff: stuff.html
 
     <!-- --------------------------------------- JavaScript/JQuery --------------------------------------- -->
     <script type="text/javascript" src="assets/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script type="text/javascript" src="assets/js/jspdf.min.js"></script>
     <script type="text/javascript" src="assets/js/logo-base64.js"></script>
+    <script type="text/javascript" src="assets/js/ED-validation.js"></script>
+    <script type="text/javascript" src="assets/js/ED.js"></script>
     <script type="text/javascript" src="assets/js/ED-data.js"></script>
     <script type="text/javascript" src="assets/js/ED-buttons.js"></script>
-    <script type="text/javascript" src="assets/js/ED.js"></script>
 </body>
 </html>

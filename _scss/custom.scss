@@ -51,7 +51,7 @@
 
 /* --------------------------------- COLOURS --------------------------------- */
 .primary {
-    color: #C5B097;
+    color: #C5B097 !important;
 }
 
 .primary-background {
@@ -72,3 +72,6 @@
 
 
 /* --------------------------------- MATERIALIZE OVERRIDES --------------------------------- */
+.character-counter {
+    color: $secondary-color !important;
+}

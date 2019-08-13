@@ -1,18 +1,22 @@
 <!-- --------------------------- HIDDEN PHOTO FORMS --------------------------- -->
 <!-- HEADSHOTS -->
-<div id="photo_head" action="#" class="c_hide">
+<form id="photo_head" action="#" class="c_hide">
     <div class="row">
         <div class="col s6 offset-s3">
             <div class="card">
                 <div class="card-content white-text">
                     <span class="card-title secondary">How many subjects need to be photographed?</span>
                     <div class="input-field inline">
-                        <input id="num_ppl" type="number" class="validate">
+                        <input id="num_ppl" name="num_ppl" type="number" class="validate">
+                        <label for="num_ppl">Number</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <span class="card-title secondary">How many looks/options per subject would you like?</span>
                     <div class="input-field inline">
-                        <input id="num_looks" type="number" class="validate">
+                        <input id="num_looks" name="num_looks" type="number" class="validate">
+                        <label for="num_looks">Number</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <br />
@@ -66,15 +70,15 @@
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_head')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 <!-- EVENTS -->
 <form id="photo_events" action="#" class="c_hide">
@@ -86,33 +90,43 @@
                         panoramas, etc.) you’re
                         looking for?</span>
                     <div class="input-field inline">
-                        <input id="photo_num_deliv" type="number" class="validate">
+                        <input id="photo_num_deliv" name="photo_num_deliv" type="number" class="validate">
+                        <label for="photo_num_deliv">Number</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <span class="card-title secondary">What is the duration of the event?</span>
                     <div class="input-field inline">
-                        <input id="photo_event_length" type="number" class="validate">
+                        <input id="photo_event_length" name="photo_event_length" type="number" class="validate">
+                        <label for="photo_event_length">Hours</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <span class="card-title secondary">What kind of event is it?</span>
-                    <select id="photo_events_select"
-                        onchange="other_text_display('#photo_events_select', '#photo_events_other_div')">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="Concert">Concert</option>
-                        <option value="Corporate Function">Corporate Function</option>
-                        <option value="Sporting Event">Sporting Event</option>
-                        <option value="Festival">Festival</option>
-                        <option value="Promotion/Brand Activation">Promotion/Brand Activation</option>
-                        <option value="Other">Other</option>
-                    </select>
+                    <div class="input-field">
+                        <select id="photo_events_select" name="photo_events_select" class="validate"
+                            onchange="other_text_display('#photo_events_select', '#photo_events_other_div')" required>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="Concert">Concert</option>
+                            <option value="Corporate Function">Corporate Function</option>
+                            <option value="Sporting Event">Sporting Event</option>
+                            <option value="Festival">Festival</option>
+                            <option value="Promotion/Brand Activation">Promotion/Brand Activation</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="helper-text" data-error=""></span>
+                    </div>                    
                     <div id="photo_events_other_div" class="input-field c_hide">
-                        <input id="photo_events_other" type="text" class="validate">
-                        <label for="photo_events_other">Please explain the event</label>
+                        <input id="photo_events_other" name="photo_events_other" type="text" class="validate">
+                        <label for="photo_events_other">Other...</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <span class="card-title secondary">What are the final deliverables you would like to receive?</span>
                     <div class="input-field">
-                        <input id="final_del" type="text" class="validate">
+                        <input id="final_del" name="final_del" type="text" class="validate">
+                        <label for="final_del">Deliverables</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <span class="card-title secondary">Would travel be required?</span>
                     <div class="switch">
@@ -126,10 +140,10 @@
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_events')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -145,14 +159,16 @@
                     <span class="card-title secondary">Please describe, as best you can, the kind of photo project you
                         have in mind.</span>
                     <div class="input-field">
-                        <textarea id="photo_other_text" class="materialize-textarea primary"></textarea>
+                        <textarea id="photo_other_text" name="photo_other_text" class="materialize-textarea primary" data-length="2000"></textarea>
+                        <label for="photo_other_text">Project Details</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#photo_other')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>

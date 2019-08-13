@@ -7,8 +7,9 @@
                 <div class="card-content white-text">
                     <span class="card-title secondary">What is the estimated length of the video?</span>
                     <div class="input-field inline">
-                        <input id="video_length" type="number" class="validate">
+                        <input id="video_length" name="video_length" type="number" class="validate">
                         <label for="video_length">Minutes</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <br />
@@ -17,7 +18,7 @@
                         <label>
                             NO
                             <input id="video_series_swicth" value="No" type="checkbox"
-                                onchange="toggle_checkbox_value('#video_series_swicth', 'No')">
+                                onchange="toggle_checkbox_value('#video_series_swicth', 'Yes', 'No')">
                             <span class="lever"></span>
                             YES
                         </label>
@@ -72,14 +73,16 @@
                     <span class="card-title secondary">Please let us know about any other details for your video
                         project:</span>
                     <div class="input-field">
-                        <textarea id="video_txt" class="materialize-textarea primary"></textarea>
+                        <textarea id="video_txt" name="video_txt" class="materialize-textarea primary" data-length="2000"></textarea>
+                        <label for="video_txt">Details</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#video_form')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -95,20 +98,23 @@
                     <span class="card-title secondary">Please describe, as best you can, the kind of video project you
                         have in mind.</span>
                     <div class="input-field">
-                        <textarea id="video_other_txt" class="materialize-textarea primary"></textarea>
+                        <textarea id="video_other_txt" name="video_other_txt" class="materialize-textarea primary" data-length="2000"></textarea>
+                        <label for="video_other_txt">Project Details</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <span class="card-title secondary">What is the estimated final length of the video you need?</span>
                     <div class="input-field inline">
-                        <input id="vid_other_length secondary" type="number" class="validate">
+                        <input id="vid_other_length" name="vid_other_length" type="number" class="validate secondary">
                         <label for="vid_other_length">Minutes</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#video_other')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>

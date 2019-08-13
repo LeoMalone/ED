@@ -6,25 +6,27 @@
             <div class="card">
                 <div class="card-content white-text">
                     <span class="card-title secondary">What kind of project do you have in mind?</span>
-                    <select id="writing_copyw_projt">
+                    <select id="writing_copyw_projt" name="writing_copyw_projt" required>
                         <option value="" disabled selected>Choose your option</option>
                         <option value="Short film">Short film</option>
                         <option value="Ad/Social Media">Ad/Social Media</option>
                         <option value="Project Proposal/Concept Pitch">Project Proposal/Concept Pitch</option>
                         <option value="Game">Game</option>
                     </select>
+                    <span class="helper-text" data-error=""></span>
                     <br />
                     <span class="card-title secondary">What is the estimated final length of the script you need?</span>
                     <div class="input-field inline">
-                        <input id="writing_copyw_pages" type="number" class="validate">
-                        <label for="writing_copyw_pages">Num Pages</label>
+                        <input id="writing_copyw_pages" name="writing_copyw_pages" type="number" class="validate">
+                        <label for="writing_copyw_pages">Number</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#writing_copyw')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
 
@@ -42,25 +44,27 @@
                         interested in?</span>
                     <br />
                     <div class="input-field">
-                        <select multiple id="writing_pr_mediar" onchange="other_text_display('#writing_pr_mediar', '#writing_pr_o1_div')">
+                        <select multiple id="writing_pr_mediar" name="writing_pr_mediar" onchange="other_text_display('#writing_pr_mediar', '#writing_pr_o1_div')" required>
                             <option value="" disabled>Choose your options</option>
                             <option value="TV, ">TV</option>
                             <option value="Print, ">Print</option>
                             <option value="Radio, ">Radio</option>
                             <option value="Digital, ">Digital</option>
                             <option value="Other">Other</option>
-                        </select>                        
+                        </select>
+                        <span class="helper-text" data-error=""></span>                        
                     </div>
                     <div id="writing_pr_o1_div" class="input-field c_hide">
-                        <input id="writing_pr_o1_txt" type="text" class="validate">
-                        <label for="writing_pr_o1_txt">Please describe what you mean</label>
+                        <input id="writing_pr_o1_txt" name="writing_pr_o1_txt" type="text" class="validate">
+                        <label for="writing_pr_o1_txt">Other Text...</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                     <br />
                     <br />
                     <span class="card-title secondary">Which of the following do you require?</span>
                     <br />
                     <div class="input-field">
-                        <select multiple id="writing_pr_req" onchange="other_text_display('#writing_pr_req', '#writing_pr_o2_div')">
+                        <select multiple id="writing_pr_req" name="writing_pr_req" onchange="other_text_display('#writing_pr_req', '#writing_pr_o2_div')" required>
                             <option value="" disabled>Choose your options</option>
                             <option value="Press Release, ">Press Release</option>
                             <option value="Digital Media Strategy, ">Digital Media Strategy</option>
@@ -68,18 +72,20 @@
                             <option value="Media Kit, ">Media Kit</option>
                             <option value="Biography, ">Biography</option>
                             <option id="writing_resc_other" value="Other">Other</option>
-                        </select>                        
+                        </select>
+                        <span class="helper-text" data-error=""></span>                        
                     </div>
                     <div id="writing_pr_o2_div" class="input-field c_hide">
-                        <input id="writing_pr_o2_txt" type="text" class="validate">
-                        <label for="writing_pr_o2_txt">Please Describe what else you require</label>
+                        <input id="writing_pr_o2_txt" name="writing_pr_o2_txt" type="text" class="validate">
+                        <label for="writing_pr_o2_txt">Other Text...</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#writing_pr')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -95,14 +101,16 @@
                     <span class="card-title secondary">Please describe, as best you can, the kind of photo project you
                         have in mind.</span>
                     <div class="input-field">
-                        <textarea id="writing_other_text" class="materialize-textarea primary"></textarea>
+                        <textarea id="writing_other_text" name="writing_other_text" class="materialize-textarea primary" data-length="2000"></textarea>
+                        <label for="writing_other_text">Project Details</label>
+                        <span class="helper-text" data-error=""></span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <a class="btn waves-effect waves-dark primary-background" onclick="form_submit('#writing_other')">
+                    <button type="submit" class="btn waves-effect waves-dark primary-background">
                         Submit
                         <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
