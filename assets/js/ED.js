@@ -241,15 +241,7 @@ function create_new_pdf() {
     }      
 
 
-    Email.send({
-        SecureToken : "6a03467e-64d8-4606-a791-a8b393cc937a",
-        To : "edsquared.email@gmail.com",
-        From : "edsquared.email@gmail.com",
-        Subject : "ED Quote Application",
-        Body : "This is an auto generated email"
-    }).then(
-      message => alert(message)
-    );
+    
 
     var iframe = document.getElementById("prev_frame");    
     iframe.src = pdf.output("datauristring");
