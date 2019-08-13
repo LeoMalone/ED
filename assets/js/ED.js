@@ -131,11 +131,19 @@ function form_submit() {
             ed_data.pdfText[ed_data.form_id][k][i+1] = $(v[i]).val();
         }        
     }
-    create_new_pdf();   
+    create_new_pdf();
+
+    //reset form data and selected buttons
+    $(ed_data.form_id).hide();
+    $(ed_data.form_id).trigger("reset");
+    $(ed_data.open_buttons).hide();
+    hide_other_inputs();
+    toggle_button_selected(ed_data.proj_button);
+    toggle_button_selected(ed_data.button_id);
+    
 }
 
 function create_new_pdf() {
-
     var pdf = new jsPDF("p", "pt", "a4");
     // Optional - set properties on the document
     pdf.setProperties({
@@ -231,6 +239,17 @@ function create_new_pdf() {
             }
         }        
     }      
+
+
+    Email.send({
+        SecureToken : "6a03467e-64d8-4606-a791-a8b393cc937a",
+        To : "edsquared.email@gmail.com",
+        From : "edsquared.email@gmail.com",
+        Subject : "ED Quote Application",
+        Body : "This is an auto generated email"
+    }).then(
+      message => alert(message)
+    );
 
     var iframe = document.getElementById("prev_frame");    
     iframe.src = pdf.output("datauristring");
