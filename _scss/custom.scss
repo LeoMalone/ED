@@ -63,13 +63,20 @@
 }
 
 .secondary {
-    color: #4B566B;
+    color: #4B566B !important;
 }
 
 .secondary-background {
     background-color: #4B566B !important;
 }
 
+.tertiary {
+    color: #D1CFD0 !important;
+}
+
+.tertiary-background {
+    background-color: #D1CFD0 !important;
+}
 
 /* --------------------------------- MATERIALIZE OVERRIDES --------------------------------- */
 .character-counter {

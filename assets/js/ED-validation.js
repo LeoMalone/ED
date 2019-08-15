@@ -218,6 +218,5 @@ $("#modal_form").validate({
     },
     submitHandler: function () {
         form_submit();
-        $('#submit_modal').modal('close');
     }
 });

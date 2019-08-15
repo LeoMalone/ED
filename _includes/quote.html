@@ -7,33 +7,59 @@
 <!-- Submit Modal Structure -->
 <div id="submit_modal" class="modal">
     <form id="modal_form">
-        <div class="modal-content">
-                <h4><span class="card-title secondary">Confirm Submission</span></h4>
-                <h6 class="primary subheading-font">
-                    Please leave your name and email so we can get back to you.
-                </h6>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="first_name" name="first_name" type="text" class="validate">
-                        <label for="first_name">Full Name</label>
-                        <span class="helper-text" data-error=""></span>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="email_input" name="email_input" type="email" class="validate">
-                        <label for="email_input">Email</label>
-                        <span class="helper-text" data-error=""></span>
+        <div id="submit_modal_form" class="modal-content">            
+            <h4><span class="card-title secondary">Confirm Submission</span></h4>
+            <h6 class="primary subheading-font">
+                Please leave your name and email so we can get back to you.
+            </h6>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="first_name" name="first_name" type="text" class="validate">
+                    <label for="first_name">Full Name</label>
+                    <span class="helper-text" data-error=""></span>
+                </div>
+                <div class="input-field col s6">
+                    <input id="email_input" name="email_input" type="email" class="validate">
+                    <label for="email_input">Email</label>
+                    <span class="helper-text" data-error=""></span>
+                </div>
+            </div>                       
+        </div>
+        
+        <div id="submit_modal_spn" class="modal-content center-align c_hide">
+            <h4><span class="card-title secondary">Thank You - Sending Application now...</span></h4>
+            <br/>
+            <br/>   
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer">
+                    <div class="circle-clipper left">
+                    <div class="circle"></div>
+                    </div><div class="gap-patch">
+                    <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                    <div class="circle"></div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="waves-effect waves-green btn-flat">Send</button>
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            </div>
+            </div>             
+        </div>
+
+        <div id="submit_modal_done" class="modal-content center-align c_hide">
+            <h4><span class="card-title secondary">Sent - Thank You!</span></h4>           
+        </div>
+
+        <div id="submit_modal_foot" class="modal-footer">
+            <button type="submit" class="waves-effect waves-green btn-flat">Send</button>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+        <div id="submit_modal_cls" class="modal-footer c_hide">
+            <a onclick="reset_submit()" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
     </form>
 </div>
 
+
 <!-- MAIN PROJECT SELECTION -->
-<div class="section center-align container">
+<div class="section center-align container full-view">
     <div class="row">
         <div class="col s3">
             <img id="design_b" class="responsive-img c_button" alt=""
@@ -197,6 +223,3 @@
         {% include photo_forms.html %}
         {% include writing_forms.html %}
 </div>
-
-
-<iframe id="prev_frame" class="full-view" title="iframe"></iframe>

@@ -29,11 +29,13 @@ $(document).ready(function () {
     $("#writing_pr_b").attr("src", ed_data.btnInfo["#writing_pr_b"].off);
     $("#writing_other_b").attr("src", ed_data.btnInfo["#writing_other_b"].off);
 
+    
     $('.fixed-action-btn').floatingActionButton();
     $('.tooltipped').tooltip();
     $('select').formSelect();
     $('.modal').modal();
     $('textarea').characterCounter();
+    $('.materialboxed').materialbox();
     $("#title").delay(500).fadeIn(2000);
     $("#logo").delay(500).fadeIn(2000);
     $("#quote-card").delay(1500).fadeIn(2000);
@@ -124,6 +126,11 @@ function other_text_display(inputId, textID) {
 }
 
 function form_submit() {
+    
+    $('#submit_modal_form').hide();
+    $('#submit_modal_foot').hide();
+    $('#submit_modal_spn').show();
+
     ed_data.name = $("#first_name").val();
     ed_data.email = $("#email_input").val();
     for(const [k, v] of Object.entries(ED_Data.formDict[ed_data.form_id])) {
@@ -136,11 +143,17 @@ function form_submit() {
     //reset form data and selected buttons
     $(ed_data.form_id).hide();
     $(ed_data.form_id).trigger("reset");
+    $("#modal_form").trigger("reset");
     $(ed_data.open_buttons).hide();
     hide_other_inputs();
     toggle_button_selected(ed_data.proj_button);
     toggle_button_selected(ed_data.button_id);
-    
+    ed_data.form_id = null;
+    ed_data.open_buttons = null;
+    ed_data.proj_button = null;
+    ed_data.button_id = null;
+    ed_data.name = null;
+    ed_data.email = null;
 }
 
 function create_new_pdf() {
@@ -167,6 +180,7 @@ function create_new_pdf() {
     pdf.text("- QUOTE APPLICATION -", 165, 70);
     pdf.setFontSize(15);
     
+    // Add name and email
     pdf.text(ed_data.name, 165, 150);
     pdf.text(ed_data.email, 320, 150);
     
@@ -238,13 +252,34 @@ function create_new_pdf() {
                 }            
             }
         }        
-    }      
+    }   
 
+   // SEND EMAIL
+    Email.send({
+        SecureToken : "bfa28959-e0b8-4a29-a78f-f3c281fa4249",
+        To : "edsquared.email@gmail.com",
+        From : "postmaster@sandboxdd1ae4e941f9495ebf87c21372edf9c0.mailgun.org",
+        Subject : "ED - Quote Application",
+        Body : "This is an auto generated email. Please see attachment for quote application.",
+        Attachments: [{
+            name: "ED Quote Application.pdf",
+            data: pdf.output('datauristring')
+        }]
+    }).then(function(message) {
+        console.log(message);
+        $('#submit_modal_spn').hide();
+        $('#submit_modal_done').show();
+        $('#submit_modal_cls').show();        
+    });
+}
 
+function reset_submit() {
+    $('#submit_modal').modal('close');
+    $('#submit_modal_cls').hide();
+    $('#submit_modal_done').hide();
+    $('#submit_modal_form').show();
+    $('#submit_modal_foot').show();
     
-
-    var iframe = document.getElementById("prev_frame");    
-    iframe.src = pdf.output("datauristring");
 }
 
 function toggle_checkbox_value(inputId, newValOn, newValOff) {
