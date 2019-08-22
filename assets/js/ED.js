@@ -1,41 +1,25 @@
+"use strict";
 var ed_data;
+var pdf = new jsPDF("p", "pt", "a4");
 
 $(document).ready(function () {
+    // Initilize site data
     ed_data = new ED_Data();
 
-    // PROJECT BUTTONS INIT
-    $("#design_b").attr("src", ed_data.btnInfo["#design_b"].off);
-    $("#video_b").attr("src", ed_data.btnInfo["#video_b"].off);
-    $("#photo_b").attr("src", ed_data.btnInfo["#photo_b"].off);
-    $("#writing_b").attr("src", ed_data.btnInfo["#writing_b"].off);
-    // DESIGN BUTTONS INIT
-    $("#des_icon_b").attr("src", ed_data.btnInfo["#des_icon_b"].off);
-    $("#des_brand_b").attr("src", ed_data.btnInfo["#des_brand_b"].off);
-    $("#des_cl_b").attr("src", ed_data.btnInfo["#des_cl_b"].off);
-    $("#des_other_b").attr("src", ed_data.btnInfo["#des_other_b"].off);
-    // VIDEO BUTTONS INIT
-    $("#vid_inter_b").attr("src", ed_data.btnInfo["#vid_inter_b"].off);
-    $("#vid_prom_b").attr("src", ed_data.btnInfo["#vid_prom_b"].off);
-    $("#vid_mv_b").attr("src", ed_data.btnInfo["#vid_mv_b"].off);
-    $("#vid_sfilm_b").attr("src", ed_data.btnInfo["#vid_sfilm_b"].off);
-    $("#vid_concp_b").attr("src", ed_data.btnInfo["#vid_concp_b"].off);
-    $("#vid_other_b").attr("src", ed_data.btnInfo["#vid_other_b"].off);
-    // PHOTO BUTTONS INIT
-    $("#photo_head_b").attr("src", ed_data.btnInfo["#photo_head_b"].off);
-    $("#photo_events_b").attr("src", ed_data.btnInfo["#photo_events_b"].off);
-    $("#photo_other_b").attr("src", ed_data.btnInfo["#photo_other_b"].off);
-    // WRITING BUTTONS INIT
-    $("#writin_copyw_b").attr("src", ed_data.btnInfo["#writin_copyw_b"].off);
-    $("#writing_pr_b").attr("src", ed_data.btnInfo["#writing_pr_b"].off);
-    $("#writing_other_b").attr("src", ed_data.btnInfo["#writing_other_b"].off);
+    // Initialize all buttons to off sources
+    for(const [k, v] of Object.entries(ed_data.btnInfo)) {
+        $(k).attr("src", v.off);
+    }
 
-    
+    // Materialize initializations
     $('.fixed-action-btn').floatingActionButton();
     $('.tooltipped').tooltip();
     $('select').formSelect();
     $('.modal').modal();
     $('textarea').characterCounter();
     $('.materialboxed').materialbox();
+
+    // Initial Logo/Buttons fade in
     $("#title").delay(500).fadeIn(2000);
     $("#logo").delay(500).fadeIn(2000);
     $("#quote-card").delay(1500).fadeIn(2000);
@@ -44,6 +28,7 @@ $(document).ready(function () {
 
 // -------------------------------- FUNCTIONS -------------------------------------
 // QUOTE LOGIC --------------
+// Main project selection change (4 options)
 function project_change(project_b, bcontainer_id) {
     // If button being pressed isn't the same button
     if(ed_data.proj_button != project_b) {
@@ -65,20 +50,20 @@ function project_change(project_b, bcontainer_id) {
             $(ed_data.open_buttons).hide();
         }
         // Hide open "Other" inputs
-        hide_other_inputs();
+        if(ed_data.others.length > 0)
+            hide_other_inputs();
 
         // Fade in and scroll to the buttons section
         $(bcontainer_id).fadeIn(500);
-        $("html, body").animate({
-            scrollTop: $(bcontainer_id).offset().top
-        }, 750);
-        // 
+        scroll_to(bcontainer_id); 
         ed_data.open_buttons = bcontainer_id;
+        
         toggle_button_selected(project_b);
         ed_data.proj_button = project_b;
     }
 }
 
+// Quote type selection change (16 options) 
 function quote_selection(formId, buttonID) {
     if(ed_data.button_id != buttonID)  {
         $(ed_data.form_id).hide();
@@ -93,27 +78,28 @@ function quote_selection(formId, buttonID) {
             ed_data.button_id = null;
         }
         ed_data.button_id = buttonID;
-        toggle_button_selected(buttonID);        
-        hide_other_inputs();
+        toggle_button_selected(buttonID);
+        
+        if(ed_data.others.length > 0)
+            hide_other_inputs();
     }
 }
 
-function hide_other_inputs() {
-    if(ed_data.others != null) {
-        for(let i = 0; i < ed_data.length; i++) {
-            var temp = ed_data.others[i];
-            $(temp).hide();
-        }
-        ed_data.others = [];
+// Hide all other option inputs
+function hide_other_inputs() {    
+    for(let i = 0; i < ed_data.others.length; i++) {
+        $(ed_data.others[i]).hide();
     }
+    ed_data.others = [];    
 }
 
+// Show or hide a specific other input
 function other_text_display(inputId, textID) {
     if(inputId != null && textID != null && $(inputId).val() != null) {
         if($(inputId).val().includes("Other") || $(inputId).val() == "Yes") {        
             $(textID).show();
             if(ed_data.others.indexOf(textID) <= -1) {
-                ed_data.others[ed_data.length] = textID;
+                ed_data.others[ed_data.others.length] = textID;
             }
         } else {
             $(textID).hide();
@@ -125,6 +111,28 @@ function other_text_display(inputId, textID) {
     }
 }
 
+// toggle the value of the cciked checkbox
+function toggle_checkbox_value(inputId, newValOn, newValOff) {
+    if($(inputId).is(":checked")) {
+        $(inputId).val(newValOn);
+    } else {
+        $(inputId).val(newValOff);
+    }
+}
+
+// toggle the img src value for the clicked button
+function toggle_button_selected(id) {
+    if(ed_data.btnInfo[id].isOn) {
+        $(id).attr("src", ed_data.btnInfo[id].off);
+        ed_data.btnInfo[id].isOn = false;
+    } else {
+        $(id).attr('selected');
+        $(id).attr("src", ed_data.btnInfo[id].on);
+        ed_data.btnInfo[id].isOn = true;
+    }
+}
+
+// Quote submission form
 function form_submit() {
     
     $('#submit_modal_form').hide();
@@ -133,57 +141,39 @@ function form_submit() {
 
     ed_data.name = $("#first_name").val();
     ed_data.email = $("#email_input").val();
+
     for(const [k, v] of Object.entries(ED_Data.formDict[ed_data.form_id])) {
         for(let i = 0; i < ED_Data.formDict[ed_data.form_id][k].length; i++) {        
             ed_data.pdfText[ed_data.form_id][k][i+1] = $(v[i]).val();
         }        
     }
-    create_new_pdf();
-
-    //reset form data and selected buttons
-    $(ed_data.form_id).hide();
-    $(ed_data.form_id).trigger("reset");
-    $("#modal_form").trigger("reset");
-    $(ed_data.open_buttons).hide();
-    hide_other_inputs();
-    toggle_button_selected(ed_data.proj_button);
-    toggle_button_selected(ed_data.button_id);
-    ed_data.form_id = null;
-    ed_data.open_buttons = null;
-    ed_data.proj_button = null;
-    ed_data.button_id = null;
-    ed_data.name = null;
-    ed_data.email = null;
+    
+    var tmp =  $('#brand_ref_file').get(0).files[0];   
+    if(tmp != null) {
+        var reader  = new FileReader();
+        reader.readAsDataURL(tmp);
+        reader.onload = function(e) {
+            ed_data.attachment = reader.result;
+            console.log(ed_data.attachment);
+            create_new_pdf();
+            reset_form_data();
+        };
+    } else {
+        create_new_pdf();
+        reset_form_data();
+    }    
 }
 
+// PDF LOGIC --------------
 function create_new_pdf() {
-    var pdf = new jsPDF("p", "pt", "a4");
+    
     // Optional - set properties on the document
     pdf.setProperties({
         title: "ED - QUOTE",
         subject: "Auto generated pdf for ED quote form",
         creator: "ED"
     });
-    pdf.setFont("Iowan Old Style");
-    pdf.setFontSize(15);
-    pdf.setFillColor(197, 176, 151);
-    pdf.roundedRect(10, 10, 575, 100, 10, 10, "F");
-    pdf.addImage(imgData, "JPEG", 30, 30, 108, 110);
-
-    pdf.setDrawColor(209, 207, 208);
-    pdf.setLineWidth(0.1);
-    pdf.line(155, 85, 540, 85); // horizontal line
-    pdf.line(155, 35, 540, 35); // horizontal line
-
-    pdf.setFontSize(30);
-    pdf.setTextColor(75, 86, 107);
-    pdf.text("- QUOTE APPLICATION -", 165, 70);
-    pdf.setFontSize(15);
-    
-    // Add name and email
-    pdf.text(ed_data.name, 165, 150);
-    pdf.text(ed_data.email, 320, 150);
-    
+    create_pdf_header();   
     
     let offset = 200;
     let pr_offset = 40;
@@ -252,19 +242,53 @@ function create_new_pdf() {
                 }            
             }
         }        
-    }   
+    }
+    send_email();
+}
 
-   // SEND EMAIL
+function create_pdf_header() {
+    pdf.setFont("Iowan Old Style");
+    pdf.setFontSize(15);
+    pdf.setFillColor(197, 176, 151);
+    pdf.roundedRect(10, 10, 575, 100, 10, 10, "F");
+    pdf.addImage(imgData, "JPEG", 30, 30, 108, 110);
+
+    pdf.setDrawColor(209, 207, 208);
+    pdf.setLineWidth(0.1);
+    pdf.line(155, 85, 540, 85); // horizontal line
+    pdf.line(155, 35, 540, 35); // horizontal line
+
+    pdf.setFontSize(30);
+    pdf.setTextColor(75, 86, 107);
+    pdf.text("- QUOTE APPLICATION -", 165, 70);
+    pdf.setFontSize(15);
+    
+    // Add name and email
+    pdf.text(ed_data.name, 165, 150);
+    pdf.text(ed_data.email, 320, 150); 
+}
+
+function send_email() {
+    var atts = [];
+    atts[0] = {
+        name: "ED Quote Application.pdf",
+        data: pdf.output('datauristring')
+    }
+    if(ed_data.attachment != null) {
+        atts[1] = {
+            name: $("#brand_ref_img").val(),
+            data: ed_data.attachment
+        }
+    }
+
+    // SEND EMAIL
     Email.send({
         SecureToken : "bfa28959-e0b8-4a29-a78f-f3c281fa4249",
         To : "edsquared.email@gmail.com",
         From : "postmaster@sandboxdd1ae4e941f9495ebf87c21372edf9c0.mailgun.org",
         Subject : "ED - Quote Application",
         Body : "This is an auto generated email. Please see attachment for quote application.",
-        Attachments: [{
-            name: "ED Quote Application.pdf",
-            data: pdf.output('datauristring')
-        }]
+        Attachments: atts
     }).then(function(message) {
         console.log(message);
         $('#submit_modal_spn').hide();
@@ -281,23 +305,22 @@ function reset_submit() {
     $('#submit_modal_foot').show();
     
 }
+function reset_form_data() {
+    //reset form data and selected buttons
+    $(ed_data.form_id).hide();
+    $(ed_data.form_id).trigger("reset");
+    $("#modal_form").trigger("reset");
+    $(ed_data.open_buttons).hide();
+    if(ed_data.others.length > 0)
+        hide_other_inputs();
+    toggle_button_selected(ed_data.proj_button);
+    toggle_button_selected(ed_data.button_id);
 
-function toggle_checkbox_value(inputId, newValOn, newValOff) {
-    if($(inputId).is(":checked")) {
-        $(inputId).val(newValOn);
-    } else {
-        $(inputId).val(newValOff);
-    }
-}
-
-function toggle_button_selected(id) {
-    if(ed_data.btnInfo[id].isOn) {
-        $(id).attr("src", ed_data.btnInfo[id].off);
-        ed_data.btnInfo[id].isOn = false;
-    } else {
-        $(id).attr('selected');
-        $(id).attr("src", ed_data.btnInfo[id].on);
-        ed_data.btnInfo[id].isOn = true;
-    }
+    ed_data.form_id = null;
+    ed_data.open_buttons = null;
+    ed_data.proj_button = null;
+    ed_data.button_id = null;
+    ed_data.name = null;
+    ed_data.email = null;
 }
 // ----------------------

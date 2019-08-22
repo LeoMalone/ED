@@ -32,9 +32,13 @@ $("#des_brand_logo").validate({
             minlength: 1,
             maxlength: 3
         },
-        col_scheme_switch: {},
-        ref_img_switch: {},
-        brand_ref_img: {},
+        brand_ref_img: {
+            required: function (element) {
+                console.log("HERE");
+                return ($("#ref_img_switch").is(":checked"));
+            },
+            extension: "jpg|png|webp|tiff|psd|raw" 
+        }
     }
 });
 // CONCEPT LAYOUT

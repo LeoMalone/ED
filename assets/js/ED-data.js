@@ -1,3 +1,4 @@
+"use strict";
 class ED_Data {
     form_id = null;
     button_id = null;
@@ -7,6 +8,8 @@ class ED_Data {
     answers = { 0: null, 1: null, 2: null, 3: null, 4: null, 5: null };
     name = null;
     email = null;
+    attachment = null;
+
     // BUTTON SOURCES
     btnInfo = {
         // MAIN BUTTONS
