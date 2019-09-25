@@ -21,7 +21,7 @@
 
 .title {
     font-weight: bold;
-    font-style: italic;
+    font-style: italic; 
 }
 
 .full-view {
@@ -46,6 +46,11 @@
 
 .quote-title-size {
     min-height: 150px;
+}
+
+.no-padding {
+    padding: 0 !important;
+    line-height: 0 !important;
 }
 
 /* --------------------------------- COLOURS --------------------------------- */
@@ -80,4 +85,66 @@
 /* --------------------------------- MATERIALIZE OVERRIDES --------------------------------- */
 .character-counter {
     color: $secondary-color !important;
+}
+
+
+/* ------------------------------------ STUFF OVERLAYS ------------------------------------ */
+.thumb-container {
+    position: relative;
+}
+
+.thumb-container {
+    .video, .vidDes, .writDes, .design, .photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+    }
+}
+
+.thumb-container:hover .video {
+    display: block;
+    background: url('../site-img/Stuff/Overlays/Overlay - Video.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+}
+
+.thumb-container:hover .vidDes {
+    display: block;
+    background: url('../site-img/Stuff/Overlays/Overlay - Video & Design.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.85;
+}
+
+.thumb-container:hover .writDes {
+    display: block;
+    background: url('../site-img/Stuff/Overlays/Overlay - Writing & Design.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.85;
+}
+
+.thumb-container:hover .design {
+    display: block;
+    background: url('../site-img/Stuff/Overlays/Overlay - Design.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.85;
+}
+
+.thumb-container:hover .photo {
+    display: block;
+    background: url('../site-img/Stuff/Overlays/Overlay - Photo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.85;
 }

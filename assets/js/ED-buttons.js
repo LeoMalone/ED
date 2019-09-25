@@ -26,15 +26,15 @@ function scroll_to(id) {
 // INDEX SECTION ----------------------------------
 // QUOTE BUTTON
 $("#quote-card").hover(function () {
-    $("#quote-card").attr("src", "assets/site-img/Splash - Quote (Pressed).png");
+    $("#quote-card").attr("src", "assets/site-img/Splash/Splash - Quote (Pressed).png");
 }, function () {
-    $("#quote-card").attr("src", "assets/site-img/Splash - Quote.png");
+    $("#quote-card").attr("src", "assets/site-img/Splash/Splash - Quote.png");
 });
 // STUFF BUTTON
 $("#stuff-card").hover(function () {
-    $("#stuff-card").attr("src", "assets/site-img/Splash - Work (Pressed).png");
+    $("#stuff-card").attr("src", "assets/site-img/Splash/Splash - Work (Pressed).png");
 }, function () {
-    $("#stuff-card").attr("src", "assets/site-img/Splash - Work.png");
+    $("#stuff-card").attr("src", "assets/site-img/Splash/Splash - Work.png");
 });
 
 // QUOTE SECTION ----------------------------------

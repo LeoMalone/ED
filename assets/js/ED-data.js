@@ -15,23 +15,23 @@ class ED_Data {
         // MAIN BUTTONS
         "#design_b": {
             isOn: false,
-            on: "assets/site-img/Quote - Design (Pressed).png",
-            off: "assets/site-img/Quote - Design.png"
+            on: "assets/site-img/Quote/Quote - Design (Pressed).png",
+            off: "assets/site-img/Quote/Quote - Design.png"
         },
         "#video_b": {
             isOn: false,
-            on: "assets/site-img/Quote - Video (Pressed).png",
-            off: "assets/site-img/Quote - Video.png"
+            on: "assets/site-img/Quote/Quote - Video (Pressed).png",
+            off: "assets/site-img/Quote/Quote - Video.png"
         },
         "#photo_b": {
             isOn: false,
-            on: "assets/site-img/Quote - Photo (Pressed).png",
-            off: "assets/site-img/Quote - Photo.png"
+            on: "assets/site-img/Quote/Quote - Photo (Pressed).png",
+            off: "assets/site-img/Quote/Quote - Photo.png"
         },
         "#writing_b": {
             isOn: false,
-            on: "assets/site-img/Quote - Writing (Pressed).png",
-            off: "assets/site-img/Quote - Writing.png"
+            on: "assets/site-img/Quote/Quote - Writing (Pressed).png",
+            off: "assets/site-img/Quote/Quote - Writing.png"
         },
         // DESIGN BUTTONS
         "#des_icon_b": {

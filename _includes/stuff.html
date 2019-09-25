@@ -1,48 +1,111 @@
 <!-- SECTION TITLE -->
 <div id="stuff-title" class="section primary center-align subheading-font">
-    <h3 class="title">- Check out <span class="secondary">E</span>D<sup>2</sup> client work <span class="secondary">&</span> our own projects -</h3>
+    <h4 class="title">- Check out <span class="secondary">E</span>D<sup>2</sup> client work <span
+            class="secondary">&</span> our own projects -</h4>
 </div>
 
 <!-- PHOTO ITERATOR - from assets/img -->
 <div class="section secondary-background center-align">
-    <div class="container">
-        {% assign image_files = site.static_files | where: "image", true %}
+    <!-- {% assign image_files = site.static_files | where: "image", true %}
         {% for myimage in image_files %}
         {% assign value = forloop.index | modulo:4 %}
         {% if value == 1 %}
         <div class="row valign-wrapper primary-boarder rcorners img-template">
-        {% endif %}           
-        <div class="col s3">
-            <img class="materialboxed responsive-img" data-caption="{{ myimage.basename }}" src="/ED/{{ myimage.path }}" alt=""/>
+            {% endif %}
+            <div class="col s3">
+                <img class="materialboxed responsive-img" data-caption="{{ myimage.basename }}" src="/ED/{{ myimage.path }}"
+                    alt="" />
+            </div>
+            {% if value == 0 or forloop.last %}
         </div>
-        {% if value == 0 or forloop.last %}
+        {% endif %}
+        {% endfor %} -->
+    <br />
+    <div class="row">
+        <div class="col s2 offset-s1 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/1.png" />
+            <div class="video"></div>
         </div>
-        {% endif %}         
-        {% endfor %}
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/2.png" />
+            <div class="video"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/3.png" />
+            <div class="video"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/4.png" />
+            <div class="vidDes"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/5.png" />
+            <div class="video"></div>
+        </div>
+        <div class="col s2 offset-s1 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/6.png" />
+            <div class="writDes"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/7.png" />
+            <div class="design"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/8.png" />
+            <div class="vidDes"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/9.png" />
+            <div class="design"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/10.png" />
+            <div class="writDes"></div>
+        </div>
+        <div class="col s2 offset-s1 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/11.png" />
+            <div class="photo"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/12.png" />
+            <div class="video"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/13.png" />
+            <div class="video"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/14.png" />
+            <div class="video"></div>
+        </div>
+        <div class="col s2 no-padding thumb-container c_button">
+            <img class="responsive-img" src="assets/site-img/Stuff/Thumbnails/15.png" />
+            <div class="photo"></div>
+        </div>
     </div>
 </div>
 
 <!-- PREV AND CURRENT CLIENTS SECTION -->
 <div class="section white center-align">
-    <div class="container primary">      
+    <div class="container primary">
         <h3 class="title subheading-font">- Our Clients <span class="secondary">&</span> Partners -</h3>
         <div class="row valign-wrapper">
             <div class="col s4">
-                <img class="responsive-img" src="assets/site-img/Our Clients - SRCHC.png" alt=""/>
+                <img class="responsive-img" src="assets/site-img/Clients/Our Clients - SRCHC.png" alt="" />
             </div>
             <div class="col s4">
-                <img class="responsive-img" src="assets/site-img/Our Clients - HOVR.png" alt=""/>
+                <img class="responsive-img" src="assets/site-img/Clients/Our Clients - HOVR.png" alt="" />
             </div>
             <div class="col s4">
-                <img class="responsive-img" src="assets/site-img/Our Clients - TBT.png" alt=""/>
+                <img class="responsive-img" src="assets/site-img/Clients/Our Clients - TBT.png" alt="" />
             </div>
         </div>
         <div class="row valign-wrapper">
             <div class="col s6">
-                <img class="responsive-img" src="assets/site-img/Our Clients - LambShep.png" alt=""/>
+                <img class="responsive-img" src="assets/site-img/Clients/Our Clients - LambShep.png" alt="" />
             </div>
             <div class="col s6">
-                <img class="responsive-img" src="assets/site-img/Our Clients - CReATe.png" alt=""/>
+                <img class="responsive-img" src="assets/site-img/Clients/Our Clients - CReATe.png" alt="" />
             </div>
         </div>
     </div>
