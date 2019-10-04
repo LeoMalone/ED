@@ -18,6 +18,7 @@ $(document).ready(function () {
     $('.modal').modal();
     $('textarea').characterCounter();
     $('.materialboxed').materialbox();
+    $('.tabs').tabs();
 
     // Initial Logo/Buttons fade in
     $("#title").delay(500).fadeIn(2000);
