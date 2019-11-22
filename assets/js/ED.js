@@ -1,7 +1,6 @@
 "use strict";
 var ed_data;
-var pdf = new jsPDF("p", "pt", "a4");
-
+var pdf;
 $(document).ready(function () {
     // Initilize site data
     ed_data = new ED_Data();
@@ -27,6 +26,71 @@ $(document).ready(function () {
     $("#stuff-card").delay(1500).fadeIn(2000);
 });
 
+// FORM DICTIONARY
+var formDict = {
+    // DESIGN
+    "#des_icons": {
+        0: ["#num_icons"],
+        1: ["#icon_desc"]
+    },
+    "#des_brand_logo": {
+        0: ["#num_options"],
+        1: ["#col_scheme_switch"],
+        2: ["#ref_img_switch", "#brand_ref_img"],
+    },
+    "#des_concept_layout": {
+        0: ["#des_cp_text"]
+    },
+    "#design_other": {
+        0: ["#design_other_txt"],
+        1: ["#design_other_length"]
+    },
+    // VIDEO
+    "#video_form": {
+        0: ["#video_length"],
+        1: ["#video_series_swicth"],
+        2: ["#video_scouted_switch", "#video_booked_switch"],
+        3: ["#video_strybrd_switch", "#video_sbdev_switch"],
+        4: ["#video_txt"]
+    },
+    "#video_other": {
+        0: ["#video_other_txt"],
+        1: ["#vid_other_length"]
+    },
+    // PHOTO
+    "#photo_head": {
+        0: ["#num_ppl"],
+        1: ["#num_looks"],
+        2: ["#photo_lighting_switch"],
+        3: ["#photo_wardrobe_switch"],
+        4: ["#photo_location_switch"],
+        5: ["#photo_studio_switch"]
+    },
+    "#photo_events": {
+        0: ["#photo_num_deliv"],
+        1: ["#photo_event_length"],
+        2: ["#photo_events_select", "#photo_events_other"],
+        3: ["#final_del"],
+        4: ["#photo_travel_switch"]
+    },
+    "#photo_other": {
+        0: ["#photo_other_text"]
+    },
+
+    // WRITING
+    "#writing_copyw": {
+        0: ["#writing_copyw_projt"],
+        1: ["#writing_copyw_pages"]
+    },
+    "#writing_pr": {
+        0: ["#writing_pr_mediar", "#writing_pr_o1_txt"],
+        1: ["#writing_pr_req", "#writing_pr_o2_txt"]
+    },
+    "#writing_other": {
+        0: ["#writing_other_text"]
+    }
+};
+
 // -------------------------------- FUNCTIONS -------------------------------------
 // QUOTE LOGIC --------------
 // Main project selection change (4 options)
@@ -45,6 +109,7 @@ function project_change(project_b, bcontainer_id) {
         // Hide and reset currently open form
         $(ed_data.form_id).hide();
         $(ed_data.form_id).trigger("reset");
+        $(".helper-text").remove();
 
         // If the button conatiner id is not the same hide buttons
         if(bcontainer_id != ed_data.open_buttons) {
@@ -69,6 +134,8 @@ function quote_selection(formId, buttonID) {
     if(ed_data.button_id != buttonID)  {
         $(ed_data.form_id).hide();
         $(ed_data.form_id).trigger("reset");
+        $(".helper-text").remove();
+
         $(formId).fadeIn(500);
         $("html, body").animate({
             scrollTop: $(formId).offset().top,
@@ -112,7 +179,7 @@ function other_text_display(inputId, textID) {
     }
 }
 
-// toggle the value of the cciked checkbox
+// toggle the value of the clicked checkbox
 function toggle_checkbox_value(inputId, newValOn, newValOff) {
     if($(inputId).is(":checked")) {
         $(inputId).val(newValOn);
@@ -134,8 +201,7 @@ function toggle_button_selected(id) {
 }
 
 // Quote submission form
-function form_submit() {
-    
+function form_submit() {    
     $('#submit_modal_form').hide();
     $('#submit_modal_foot').hide();
     $('#submit_modal_spn').show();
@@ -143,30 +209,42 @@ function form_submit() {
     ed_data.name = $("#first_name").val();
     ed_data.email = $("#email_input").val();
 
-    for(const [k, v] of Object.entries(ED_Data.formDict[ed_data.form_id])) {
-        for(let i = 0; i < ED_Data.formDict[ed_data.form_id][k].length; i++) {        
+    for(const [k, v] of Object.entries(formDict[ed_data.form_id])) {
+        for(let i = 0; i < formDict[ed_data.form_id][k].length; i++) {        
             ed_data.pdfText[ed_data.form_id][k][i+1] = $(v[i]).val();
         }        
     }
     
-    var tmp =  $('#brand_ref_file').get(0).files[0];   
+    var tmp =  $('#brand_ref_file').get(0).files[0]; 
     if(tmp != null) {
         var reader  = new FileReader();
         reader.readAsDataURL(tmp);
         reader.onload = function(e) {
             ed_data.attachment = reader.result;
-            console.log(ed_data.attachment);
-            create_new_pdf();
-            reset_form_data();
+            create_new_pdf();             
         };
     } else {
         create_new_pdf();
-        reset_form_data();
-    }    
+    }   
 }
 
 // PDF LOGIC --------------
 function create_new_pdf() {
+    pdf = new jsPDF('p', 'pt', 'letter');
+    $('#pdf_inner').append('<div>' + ed_data.name + '</div>');
+    $('#pdf_inner').append('<div>' + ed_data.email + '</div>');
+    let value;
+    for (const [k, v] of Object.entries(ed_data.pdfText[ed_data.form_id])) {
+        for(let i = 0; i < v.length; i++) {
+            value = ed_data.pdfText[ed_data.form_id][k][i];
+            console.log(value, k, i);
+            if(i == 0) {
+                $('#pdf_inner').append('<h6 class="secondary">' + value + '</h6>');
+            } else {
+                $('#pdf_inner').append("<div>" + value + "</div>");
+            }
+        }
+    }
     
     // Optional - set properties on the document
     pdf.setProperties({
@@ -174,102 +252,36 @@ function create_new_pdf() {
         subject: "Auto generated pdf for ED quote form",
         creator: "ED"
     });
-    create_pdf_header();   
-    
-    let offset = 200;
-    let pr_offset = 40;
-    var heightOffset = 2.7;
-    for (const [k, v] of Object.entries(ed_data.pdfText[ed_data.form_id])) {        
-        for(let i = 0; i < v.length; i++) {
-            let tmp = ed_data.pdfText[ed_data.form_id][k][i];
-            let splitTextAns;
-            if(tmp != null) {
-                if(i == 0) {
-                    splitTextAns = pdf.splitTextToSize(tmp, 530);
-                    if((pdf.getTextDimensions(splitTextAns).h)*heightOffset >= (820 - offset)) {
-                        pdf.addPage();
-                        offset = 50;
-                        pdf.text(splitTextAns, 40, offset);
-                    } else {
-                        pdf.text(splitTextAns, 40, offset);
-                    }
-                    offset += ((pdf.getTextDimensions(splitTextAns).h)*heightOffset);    
-                    continue;
-                    
-                } else {
-                    splitTextAns = pdf.splitTextToSize(tmp, 490);                    
-                    if(((pdf.getTextDimensions(splitTextAns).h)*heightOffset) + offset > 850) {
-                        if(((pdf.getTextDimensions(splitTextAns).h)*heightOffset) >= 600) {
 
-                            var arr = splitTextAns,
-                            mid = Math.ceil(arr.length/2),
-                            obj = {
-                                left: arr.slice(0, mid),
-                                right: arr.slice(mid)
-                            };
-                            if((pdf.getTextDimensions(obj.left).h)*heightOffset >= (820 - offset)) {
-                                pdf.addPage();
-                                offset = 50;
-                                pdf.text(obj.left, 60, offset);
-                                offset += ((pdf.getTextDimensions(obj.left).h)*heightOffset);
-                                if((pdf.getTextDimensions(obj.right).h)*heightOffset >= (820 - offset)) {
-                                    pdf.addPage();
-                                    offset = 50;
-                                    pdf.text(obj.right, 60, offset);
-                                } else {
-                                    pdf.text(obj.right, 60, offset);
-                                    offset += ((pdf.getTextDimensions(obj.right).h)*heightOffset);
-                                }
-                            } else {
-                                pdf.text(obj.left, 60, offset);
-                                pdf.addPage();
-                                offset = 50;
-                                pdf.text(obj.right, 60, offset);
-                            }
-                            offset += ((pdf.getTextDimensions(obj.right).h)*heightOffset);
-                            continue;
-                        } else {
-                            pdf.addPage();
-                            offset = 50;
-                        }                        
-                    }
-                    pdf.text(splitTextAns, 60, offset);                                 
-                }
-                if(ed_data.form_id == "#writing_pr") {
-                    offset = offset + pr_offset + ((pdf.getTextDimensions(splitTextAns).h)*heightOffset);
-                    pr_offset += 10;  
-                } else {
-                    offset += ((pdf.getTextDimensions(splitTextAns).h)*heightOffset);    
-                }            
-            }
-        }        
-    }
-    send_email();
-}
+    let specialElementHandlers = {
+        '#bypassme': function (element, renderer) {
+            return true
+        }
+    };
 
-function create_pdf_header() {
-    pdf.setFont("Iowan Old Style");
-    pdf.setFontSize(15);
-    pdf.setFillColor(197, 176, 151);
-    pdf.roundedRect(10, 10, 575, 100, 10, 10, "F");
-    pdf.addImage(imgData, "JPEG", 30, 30, 108, 110);
+    let margins = {
+        top: 20,
+        bottom: 60,
+        left: 40,
+        width: 522
+    };
 
-    pdf.setDrawColor(209, 207, 208);
-    pdf.setLineWidth(0.1);
-    pdf.line(155, 85, 540, 85); // horizontal line
-    pdf.line(155, 35, 540, 35); // horizontal line
-
-    pdf.setFontSize(30);
-    pdf.setTextColor(75, 86, 107);
-    pdf.text("- QUOTE APPLICATION -", 165, 70);
-    pdf.setFontSize(15);
-    
-    // Add name and email
-    pdf.text(ed_data.name, 165, 150);
-    pdf.text(ed_data.email, 320, 150); 
+    let source = $('#pdf_container')[0];
+    pdf.fromHTML(
+        source, // HTML string or DOM elem ref.
+        margins.left, // x coord
+        margins.top, { // y coord
+        'width': margins.width, // max width of content on PDF
+        'elementHandlers': specialElementHandlers
+    },
+        function (dispose) {
+            send_email();
+        }, margins
+    );
 }
 
 function send_email() {
+    // Setup attachments
     var atts = [];
     atts[0] = {
         name: "ED Quote Application.pdf",
@@ -294,7 +306,8 @@ function send_email() {
         console.log(message);
         $('#submit_modal_spn').hide();
         $('#submit_modal_done').show();
-        $('#submit_modal_cls').show();        
+        $('#submit_modal_cls').show();
+        reset_form_data();         
     });
 }
 
@@ -304,6 +317,7 @@ function reset_submit() {
     $('#submit_modal_done').hide();
     $('#submit_modal_form').show();
     $('#submit_modal_foot').show();
+    $("#pdf_inner").html("");
     
 }
 function reset_form_data() {
@@ -317,11 +331,6 @@ function reset_form_data() {
     toggle_button_selected(ed_data.proj_button);
     toggle_button_selected(ed_data.button_id);
 
-    ed_data.form_id = null;
-    ed_data.open_buttons = null;
-    ed_data.proj_button = null;
-    ed_data.button_id = null;
-    ed_data.name = null;
-    ed_data.email = null;
+    ed_data = new ED_Data();
 }
 // ----------------------

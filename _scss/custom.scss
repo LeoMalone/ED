@@ -82,6 +82,10 @@
     background-color: #D1CFD0 !important;
 }
 
+.error {
+    color: red !important;
+}
+
 /* --------------------------------- MATERIALIZE OVERRIDES --------------------------------- */
 .character-counter {
     color: $secondary-color !important;
@@ -95,6 +99,21 @@
 
 .modal-footer {
     background-color: $secondary-color !important;
+}
+
+.page-footer {
+    background-color: white;
+    .footer-copyright {
+        background-color: #C5B097 !important;
+    }
+}
+
+.dropdown-content>li>span>label {
+    color: #C5B097;
+}
+
+#submit_modal_foot, #submit_modal_cls {
+    background-color: #fafafa !important;
 }
 
 

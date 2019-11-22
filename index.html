@@ -24,8 +24,8 @@ stuff: stuff.html
         </a>
         <ul>
             <li>
-                <a class="btn-floating primary-background tooltipped" onclick="scroll_to('top')"
-                    data-position="left" data-tooltip="Go to Top">
+                <a class="btn-floating primary-background tooltipped" onclick="scroll_to('top')" data-position="left"
+                    data-tooltip="Go to Top">
                     <i class="material-icons secondary">arrow_upward</i>
                 </a>
             </li>
@@ -49,45 +49,62 @@ stuff: stuff.html
         <!-- Quote Button -->
         <div class="col s4">
             <div class="container">
-                <img id="quote-card" class="responsive-img c_hide c_button" src="assets/site-img/Splash/Splash - Quote.png" alt="" width="100%" height="100%"
-                    onclick="scroll_to('#quote-title')"/>
+                <img id="quote-card" class="responsive-img c_hide c_button"
+                    src="assets/site-img/Splash/Splash - Quote.png" alt="" width="75%" height="75%"
+                    onclick="scroll_to('#quote-title')" />
             </div>
         </div>
-
         <!-- Logo Column -->
         <div class="col s4">
-            <img id="logo" class="responsive-img c_hide" src="assets/site-img/Splash/Splash - Logo.png" alt=""/>
+            <img id="logo" class="responsive-img c_hide" src="assets/site-img/Splash/Splash - Logo.png" width="75%"
+                height="75%" alt="" />
 
-             <!-- Centered Header -->
+            <!-- Centered Header -->
             <div class="section center-align">
                 <h4 id="title" class="title-font primary title c_hide">- All Things Creative -</h4>
-            </div>            
+            </div>
         </div>
-
         <!-- Stuff Button -->
         <div class="col s4">
             <div class="container">
-                <img id="stuff-card" class="responsive-img c_hide c_button" src="assets/site-img/Splash/Splash - Work.png" alt="" width="100%" height="100%" 
-                    onclick="scroll_to('#stuff-title')"/>
+                <img id="stuff-card" class="responsive-img c_hide c_button"
+                    src="assets/site-img/Splash/Splash - Work.png" alt="" width="75%" height="75%"
+                    onclick="scroll_to('#stuff-title')" />
             </div>
-        </div>            
+        </div>
     </div>
 
     <div class="divider"></div>
 
     <!-- --------------------------------------- QUOTE SECTION --------------------------------------- -->
     {% if page.quote %}
-        {% include {{ page.quote }} %}
-        {{ include.content }}
-    {% endif %}    
+    {% include {{ page.quote }} %}
+    {{ include.content }}
+    {% endif %}
 
     <div class="divider"></div>
-    
+
     <!-- --------------------------------------- STUFF SECTION --------------------------------------- -->
     {% if page.stuff %}
-        {% include {{ page.stuff }} %}
-        {{ include.content }}
+    {% include {{ page.stuff }} %}
+    {{ include.content }}
     {% endif %}
+
+    <div id="pdf_container" class="c_hide">
+        <img src="assets/site-img/Splash/Splash - Logo.png" width="100%" height="100%" alt="" />
+        <h5 class="title primary">QUOTE APPLICATION</h5>
+        <div id="pdf_inner"></div>
+    </div>
+
+
+    <footer class="page-footer">        
+        <div class="footer-copyright">
+            <div class="container center-align">                    
+                <h6 class="secondary">Contact us by phone at 647-657-5775, or by email at <a class="white-text" href="mailto:heydudes@edsquared.ca">heydudes@edsquared.ca</a></h6>
+            </div>
+        </div>
+    </footer>
+
 
     <!-- --------------------------------------- JavaScript/JQuery --------------------------------------- -->
     <script type="text/javascript" src="assets/js/jquery-3.4.0.min.js"></script>
@@ -95,10 +112,10 @@ stuff: stuff.html
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script type="text/javascript" src="assets/js/jspdf.min.js"></script>
     <script type="text/javascript" src="assets/js/smtp.js"></script>
-    <script type="text/javascript" src="assets/js/logo-base64.js"></script>
     <script type="text/javascript" src="assets/js/ED-validation.js"></script>
     <script type="text/javascript" src="assets/js/ED.js"></script>
     <script type="text/javascript" src="assets/js/ED-data.js"></script>
     <script type="text/javascript" src="assets/js/ED-buttons.js"></script>
 </body>
+
 </html>

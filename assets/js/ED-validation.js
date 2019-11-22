@@ -1,17 +1,19 @@
 // VALIDATOR DEFAULTS
 $.validator.setDefaults({
+    ignore: [],
     errorClass: "invalid",
     validClass: "valid",
+    errorElement: 'span',
     errorPlacement: function (error, element) {
-        $(element)
-            .closest("form")
-            .find("span[class='helper-text']")
-            .attr('data-error', error.text());
+        error.addClass("helper-text");
+        error.addClass("error");
+        error.appendTo(element.parent());
     },
     submitHandler: function () {
         $('#submit_modal').modal('open');
     }
 });
+
 // ICONS
 $("#des_icons").validate({
     rules: {
@@ -20,6 +22,10 @@ $("#des_icons").validate({
             min: 1,
             minlength: 1,
             maxlength: 3
+        },
+        icon_desc: {
+            required: true,
+            maxlength: 2000
         }
     }
 });
@@ -34,7 +40,6 @@ $("#des_brand_logo").validate({
         },
         brand_ref_img: {
             required: function (element) {
-                console.log("HERE");
                 return ($("#ref_img_switch").is(":checked"));
             },
             extension: "jpg|png|webp|tiff|psd|raw" 
