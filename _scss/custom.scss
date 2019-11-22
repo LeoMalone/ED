@@ -101,19 +101,16 @@
     background-color: $secondary-color !important;
 }
 
-.page-footer {
-    background-color: white;
-    .footer-copyright {
-        background-color: #C5B097 !important;
-    }
-}
-
 .dropdown-content>li>span>label {
     color: #C5B097;
 }
 
 #submit_modal_foot, #submit_modal_cls {
-    background-color: #fafafa !important;
+    background-color: white !important;
+}
+
+#submit_modal_form, #submit_modal_spn, #submit_modal_done {
+    background-color: white !important;
 }
 
 

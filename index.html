@@ -18,92 +18,121 @@ stuff: stuff.html
 </head>
 
 <body>
-    <div id="floating_btn" class="fixed-action-btn c_hide">
-        <a class="btn-floating btn-large tertiary-background">
-            <i class="large material-icons secondary">format_align_center</i>
-        </a>
-        <ul>
-            <li>
-                <a class="btn-floating primary-background tooltipped" onclick="scroll_to('top')" data-position="left"
-                    data-tooltip="Go to Top">
-                    <i class="material-icons secondary">arrow_upward</i>
-                </a>
-            </li>
-            <li>
-                <a class="btn-floating tertiary-background tooltipped" onclick="scroll_to('#quote-title')"
-                    data-position="left" data-tooltip="Go to Quote">
-                    <i class="material-icons secondary">format_quote</i>
-                </a>
-            </li>
-            <li>
-                <a class="btn-floating primary-background tooltipped" onclick="scroll_to('#stuff-title')"
-                    data-position="left" data-tooltip="Go to Stuff">
-                    <i class="material-icons secondary">collections</i>
-                </a>
-            </li>
-        </ul>
-    </div>
 
-    <!-- --------------------------------------- SPLASH ICON SECTION --------------------------------------- -->
-    <div class="row center-align valign-wrapper full-view">
-        <!-- Quote Button -->
-        <div class="col s4">
+    <div id="loading" class="row valign-wrapper full-view">
+        <div class="col s12 center-align">
+                <img src="assets/site-img/loading.gif" alt="Loading..." />
+        </div>                
+    </div>
+    <div id="main-container" class="c_hide">
+        <div id="floating_btn" class="fixed-action-btn c_hide">
+            <a class="btn-floating btn-large tertiary-background">
+                <i class="large material-icons secondary">format_align_center</i>
+            </a>
+            <ul>
+                <li>
+                    <a class="btn-floating primary-background tooltipped" onclick="scroll_to('top')"
+                        data-position="left" data-tooltip="Go to Top">
+                        <i class="material-icons secondary">arrow_upward</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating tertiary-background tooltipped" onclick="scroll_to('#quote-title')"
+                        data-position="left" data-tooltip="Go to Quote">
+                        <i class="material-icons secondary">format_quote</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating primary-background tooltipped" onclick="scroll_to('#stuff-title')"
+                        data-position="left" data-tooltip="Go to Stuff">
+                        <i class="material-icons secondary">collections</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- --------------------------------------- SPLASH ICON SECTION --------------------------------------- -->
+        <div class="row center-align valign-wrapper full-view">
+            <!-- Quote Button -->
+            <div class="col s4">
+                <div class="container">
+                    <img id="quote-card" class="responsive-img c_hide c_button"
+                        src="assets/site-img/Splash/Splash - Quote.png" alt="" width="75%" height="75%"
+                        onclick="scroll_to('#quote-title')" />
+                </div>
+            </div>
+            <!-- Logo Column -->
+            <div class="col s4">
+                <img id="logo" class="responsive-img c_hide" src="assets/site-img/Splash/Splash - Logo.png" width="75%"
+                    height="75%" alt="" />
+
+                <!-- Centered Header -->
+                <div class="section center-align">
+                    <h4 id="title" class="title-font primary title c_hide">- All Things Creative -</h4>
+                </div>
+            </div>
+            <!-- Stuff Button -->
+            <div class="col s4">
+                <div class="container">
+                    <img id="stuff-card" class="responsive-img c_hide c_button"
+                        src="assets/site-img/Splash/Splash - Work.png" alt="" width="75%" height="75%"
+                        onclick="scroll_to('#stuff-title')" />
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- --------------------------------------- QUOTE SECTION --------------------------------------- -->
+        {% if page.quote %}
+        {% include {{ page.quote }} %}
+        {{ include.content }}
+        {% endif %}
+
+        <div class="divider"></div>
+
+        <!-- --------------------------------------- STUFF SECTION --------------------------------------- -->
+        {% if page.stuff %}
+        {% include {{ page.stuff }} %}
+        {{ include.content }}
+        {% endif %}
+
+        <div id="pdf_container" class="c_hide">
+            <img src="assets/site-img/Splash/Splash - Logo.png" width="100%" height="100%" alt="" />
+            <h5 class="title primary">QUOTE APPLICATION</h5>
+            <div id="pdf_inner"></div>
+        </div>
+
+
+        <footer class="page-footer">
             <div class="container">
-                <img id="quote-card" class="responsive-img c_hide c_button"
-                    src="assets/site-img/Splash/Splash - Quote.png" alt="" width="75%" height="75%"
-                    onclick="scroll_to('#quote-title')" />
+                <div class="row">
+                    <div class="col s12">
+                        <h6 class="secondary">Made With:</h6>
+                        <a class="white-text" href="https://loading.io/icon/" target="_blank"
+                            rel="noopener noreferrer">loading.io</a>
+                        <span class="secondary"> | </span>
+                        <a class="white-text" href="https://www.smtpjs.com/" target="_blank"
+                            rel="noopener noreferrer">smtpjs</a>
+                        <span class="secondary"> | </span>
+                        <a class="white-text" href="https://github.com/MrRio/jsPDF" target="_blank"
+                            rel="noopener noreferrer">jsPDF</a>
+                        <span class="secondary"> | </span>
+                        <a class="white-text" href="https://materializecss.com/" target="_blank"
+                            rel="noopener noreferrer">Materialize</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- Logo Column -->
-        <div class="col s4">
-            <img id="logo" class="responsive-img c_hide" src="assets/site-img/Splash/Splash - Logo.png" width="75%"
-                height="75%" alt="" />
-
-            <!-- Centered Header -->
-            <div class="section center-align">
-                <h4 id="title" class="title-font primary title c_hide">- All Things Creative -</h4>
+            <div class="footer-copyright">
+                <div class="container center-align">
+                    <h6 class="secondary">Contact us by phone at 647-657-5775, or by email at <a class="white-text"
+                            href="mailto:heydudes@edsquared.ca">heydudes@edsquared.ca</a></h6>
+                </div>
             </div>
-        </div>
-        <!-- Stuff Button -->
-        <div class="col s4">
-            <div class="container">
-                <img id="stuff-card" class="responsive-img c_hide c_button"
-                    src="assets/site-img/Splash/Splash - Work.png" alt="" width="75%" height="75%"
-                    onclick="scroll_to('#stuff-title')" />
-            </div>
-        </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- --------------------------------------- QUOTE SECTION --------------------------------------- -->
-    {% if page.quote %}
-    {% include {{ page.quote }} %}
-    {{ include.content }}
-    {% endif %}
-
-    <div class="divider"></div>
-
-    <!-- --------------------------------------- STUFF SECTION --------------------------------------- -->
-    {% if page.stuff %}
-    {% include {{ page.stuff }} %}
-    {{ include.content }}
-    {% endif %}
-
-    <div id="pdf_container" class="c_hide">
-        <img src="assets/site-img/Splash/Splash - Logo.png" width="100%" height="100%" alt="" />
-        <h5 class="title primary">QUOTE APPLICATION</h5>
-        <div id="pdf_inner"></div>
+        </footer>
     </div>
 
 
-    <footer class="page-footer">        
-        <div class="footer-copyright">
-            <div class="container center-align">                    
-                <h6 class="secondary">Contact us by phone at 647-657-5775, or by email at <a class="white-text" href="mailto:heydudes@edsquared.ca">heydudes@edsquared.ca</a></h6>
-            </div>
-        </div>
-    </footer>
 
 
     <!-- --------------------------------------- JavaScript/JQuery --------------------------------------- -->

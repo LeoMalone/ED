@@ -1,7 +1,11 @@
 "use strict";
 var ed_data;
 var pdf;
-$(document).ready(function () {
+
+$(window).on('load', function() {
+    $('#loading').fadeOut(500);
+    $('#main-container').removeClass("c_hide");
+
     // Initilize site data
     ed_data = new ED_Data();
 
@@ -24,73 +28,8 @@ $(document).ready(function () {
     $("#logo").delay(500).fadeIn(2000);
     $("#quote-card").delay(1500).fadeIn(2000);
     $("#stuff-card").delay(1500).fadeIn(2000);
-});
-
-// FORM DICTIONARY
-var formDict = {
-    // DESIGN
-    "#des_icons": {
-        0: ["#num_icons"],
-        1: ["#icon_desc"]
-    },
-    "#des_brand_logo": {
-        0: ["#num_options"],
-        1: ["#col_scheme_switch"],
-        2: ["#ref_img_switch", "#brand_ref_img"],
-    },
-    "#des_concept_layout": {
-        0: ["#des_cp_text"]
-    },
-    "#design_other": {
-        0: ["#design_other_txt"],
-        1: ["#design_other_length"]
-    },
-    // VIDEO
-    "#video_form": {
-        0: ["#video_length"],
-        1: ["#video_series_swicth"],
-        2: ["#video_scouted_switch", "#video_booked_switch"],
-        3: ["#video_strybrd_switch", "#video_sbdev_switch"],
-        4: ["#video_txt"]
-    },
-    "#video_other": {
-        0: ["#video_other_txt"],
-        1: ["#vid_other_length"]
-    },
-    // PHOTO
-    "#photo_head": {
-        0: ["#num_ppl"],
-        1: ["#num_looks"],
-        2: ["#photo_lighting_switch"],
-        3: ["#photo_wardrobe_switch"],
-        4: ["#photo_location_switch"],
-        5: ["#photo_studio_switch"]
-    },
-    "#photo_events": {
-        0: ["#photo_num_deliv"],
-        1: ["#photo_event_length"],
-        2: ["#photo_events_select", "#photo_events_other"],
-        3: ["#final_del"],
-        4: ["#photo_travel_switch"]
-    },
-    "#photo_other": {
-        0: ["#photo_other_text"]
-    },
-
-    // WRITING
-    "#writing_copyw": {
-        0: ["#writing_copyw_projt"],
-        1: ["#writing_copyw_pages"]
-    },
-    "#writing_pr": {
-        0: ["#writing_pr_mediar", "#writing_pr_o1_txt"],
-        1: ["#writing_pr_req", "#writing_pr_o2_txt"]
-    },
-    "#writing_other": {
-        0: ["#writing_other_text"]
-    }
-};
-
+ });
+ 
 // -------------------------------- FUNCTIONS -------------------------------------
 // QUOTE LOGIC --------------
 // Main project selection change (4 options)
@@ -237,7 +176,6 @@ function create_new_pdf() {
     for (const [k, v] of Object.entries(ed_data.pdfText[ed_data.form_id])) {
         for(let i = 0; i < v.length; i++) {
             value = ed_data.pdfText[ed_data.form_id][k][i];
-            console.log(value, k, i);
             if(i == 0) {
                 $('#pdf_inner').append('<h6 class="secondary">' + value + '</h6>');
             } else {

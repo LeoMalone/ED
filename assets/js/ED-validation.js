@@ -63,12 +63,6 @@ $("#design_other").validate({
             required: true,
             minlength: 1,
             maxlength: 2000
-        },
-        design_other_length: {
-            required: true,
-            min: 1,
-            minlength: 1,
-            maxlength: 3
         }
     }
 });
