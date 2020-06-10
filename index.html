@@ -84,16 +84,16 @@ stuff: stuff.html
 
         <!-- --------------------------------------- QUOTE SECTION --------------------------------------- -->
         {% if page.quote %}
-        {% include {{ page.quote }} %}
-        {{ include.content }}
+            {% include {{ page.quote }} %}
+            {{ include.content }}
         {% endif %}
 
         <div class="divider"></div>
 
         <!-- --------------------------------------- STUFF SECTION --------------------------------------- -->
         {% if page.stuff %}
-        {% include {{ page.stuff }} %}
-        {{ include.content }}
+            {% include {{ page.stuff }} %}
+            {{ include.content }}
         {% endif %}
 
         <div id="pdf_container" class="c_hide">
@@ -140,10 +140,8 @@ stuff: stuff.html
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script type="text/javascript" src="assets/js/jspdf.min.js"></script>
     <script type="text/javascript" src="assets/js/smtp.js"></script>
-    <script type="text/javascript" src="assets/js/ED-validation.js"></script>
-    <script type="text/javascript" src="assets/js/ED.js"></script>
-    <script type="text/javascript" src="assets/js/ED-data.js"></script>
-    <script type="text/javascript" src="assets/js/ED-buttons.js"></script>
+    <script type="text/javascript" src="assets/js/ED_Data.js"></script>
+    <script type="text/javascript" src="assets/js/ED.min.js"></script>
 </body>
 
 </html>
